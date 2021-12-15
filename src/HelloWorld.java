@@ -101,6 +101,9 @@ public class HelloWorld {
         int bigNum = Integer.MAX_VALUE;
         System.out.println(++bigNum);
 
+        // numerical value assignments higher than the capacity of numerical variables will cause a compiler
+        // error warning about lossy conversion.
+
         // if a value is pushed past its max or min, we get overflow/underflow and the value will rollover to
         // the other extremes
     }
