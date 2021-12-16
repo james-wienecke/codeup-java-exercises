@@ -62,13 +62,65 @@ public class ControlFlowExercises {
             5      | 25      | 125
          */
 
-        System.out.println("Please gimme ONE integer please i need to build taable of poweeers");
-        int userNum = sc.nextInt();
-        System.out.printf("Ok here table for %d\n", userNum);
-        System.out.println("number | squared | cubed\n------ | ------- | -----");
-        for (int i = 1; i <= userNum; i++) {
-            System.out.format("%6d | %7d | %5d\n", i, (int) Math.pow(i, 2), (int) Math.pow(i, 3));
-        }
+        boolean tableContinue = true;
+        do {
+            System.out.println("Please gimme ONE integer please i need to build taable of poweeers");
+            int userNum = sc.nextInt();
+            System.out.printf("Ok here table for %d\n", userNum);
+            System.out.println("number | squared | cubed\n------ | ------- | -----");
+            for (int i = 1; i <= userNum; i++) {
+                System.out.format("%6d | %7d | %5d\n", i, (int) Math.pow(i, 2), (int) Math.pow(i, 3));
+            }
+            sc.nextLine();
+            System.out.println("Do you want to see another table? (y/n)");
+            String userDecision = sc.nextLine();
+            if (userDecision.equals("n")) {
+                tableContinue = false;
+            }
+        } while (tableContinue);
         System.out.println("thankyou byeeeee");
+        /* Letter Grades */
+        //Convert given number grades into letter grades.
+        //
+        // * Prompt the user for a numerical grade from 0 to 100.
+        // * Display the corresponding letter grade.
+        // * Prompt the user to continue.
+        // * Assume that the user will enter valid integers for the grades.
+        // * The application should only continue if the user agrees to.
+        //Grade Ranges:
+        //
+        //A : 100 - 88
+        //B : 87 - 80
+        //C : 79 - 67
+        //D : 66 - 60
+        //F : 59 - 0
+        //Bonus
+        //Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
+
+        boolean gradeContinue = true;
+        do {
+            System.out.println("Please enter a numerical grade:");
+            int userGrade = sc.nextInt();
+            String letterGrade = "A+";
+            if (userGrade < 60) letterGrade = "F";
+            else if (userGrade < 62) letterGrade = "D-";
+            else if (userGrade < 66) letterGrade = "D";
+            else if (userGrade < 70) letterGrade = "D+";
+            else if (userGrade < 72) letterGrade = "C-";
+            else if (userGrade < 76) letterGrade = "C";
+            else if (userGrade < 80) letterGrade = "C+";
+            else if (userGrade < 82) letterGrade = "B-";
+            else if (userGrade < 86) letterGrade = "B";
+            else if (userGrade < 90) letterGrade = "B+";
+            else if (userGrade < 92) letterGrade = "A-";
+            else if (userGrade < 96) letterGrade = "A";
+
+            System.out.printf("\n%d is a %s grade.", userGrade, letterGrade);
+            sc.nextLine();
+            System.out.println("Do you wish to continue? (y/n)");
+            if (sc.nextLine().equals("n")) gradeContinue = false;
+        } while (gradeContinue);
+        System.out.println("Thank you! Have a great day!");
+
     }
 }
