@@ -65,11 +65,11 @@ public class ControlFlowExercises {
         boolean tableContinue = true;
         do {
             System.out.println("Please gimme ONE integer please i need to build taable of poweeers");
-            int userNum = sc.nextInt();
+            long userNum = sc.nextInt();
             System.out.printf("Ok here table for %d\n", userNum);
-            System.out.println("number | squared | cubed\n------ | ------- | -----");
-            for (int i = 1; i <= userNum; i++) {
-                System.out.format("%6d | %7d | %5d\n", i, (int) Math.pow(i, 2), (int) Math.pow(i, 3));
+            System.out.println(" number |    squared |        cubed\n------- | ---------- | ------------");
+            for (long i = 1; i <= userNum; i++) {
+                System.out.format("%7d | %10d | %12d\n", i, (long) Math.pow(i, 2), (long) Math.pow(i, 3));
             }
             sc.nextLine();
             System.out.println("Do you want to see another table? (y/n)");
@@ -121,5 +121,9 @@ public class ControlFlowExercises {
         } while (gradeContinue);
         System.out.println("Thank you! Have a great day!");
 
+        System.out.println("Testing");
+        for (long i = 2; i < 100_000_000; i*=2) {
+            System.out.printf("%d\n", i);
+        }
     }
 }
