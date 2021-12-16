@@ -4,6 +4,7 @@ public class ControlFlowExercises {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        sc.useDelimiter("\n");
         /* Loop Basics */
         // while refactored to for
         for (int i = 5; i <= 15; i++) {
@@ -37,5 +38,37 @@ public class ControlFlowExercises {
                 System.out.println(i);
             }
         }
+
+        /* Table of Powers */
+        //Display a table of powers.
+        // * Prompt the user to enter an integer.
+        // * Display a table of squares and cubes from 1 to the value entered.
+        // * Ask if the user wants to continue.
+        // * Assume that the user will enter valid data.
+        // * Only continue if the user agrees to.
+
+        //Example Output
+        /*
+            What number would you like to go up to? 5
+
+            Here is your table!
+
+            number | squared | cubed
+            ------ | ------- | -----
+            1      | 1       | 1
+            2      | 4       | 8
+            3      | 9       | 27
+            4      | 16      | 64
+            5      | 25      | 125
+         */
+
+        System.out.println("Please gimme ONE integer please i need to build taable of poweeers");
+        int userNum = sc.nextInt();
+        System.out.printf("Ok here table for %d\n", userNum);
+        System.out.println("number | squared | cubed\n------ | ------- | -----");
+        for (int i = 1; i <= userNum; i++) {
+            System.out.format("%6d | %7d | %5d\n", i, (int) Math.pow(i, 2), (int) Math.pow(i, 3));
+        }
+        System.out.println("thankyou byeeeee");
     }
 }
