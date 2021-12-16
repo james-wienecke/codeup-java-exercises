@@ -18,10 +18,10 @@ public class ControlFlowExercises {
          256
          65536
          */
-        int i = 0;
+        int i = 100;
         do {
-            System.out.printf("%d ", i);
-            i += 2;
-        } while (i <= 100);
+            System.out.printf("%d\n", i);
+            i -= 5;
+        } while (i >= -10);
     }
 }
