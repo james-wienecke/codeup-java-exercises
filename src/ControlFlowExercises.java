@@ -5,18 +5,17 @@ public class ControlFlowExercises {
 
     public static void main(String[] args) {
         /* Loop Basics */
-        // while
-        int i = 5;
-        while (i <= 15) {
+        // while refactored to for
+        for (int i = 5; i <= 15; i++) {
             System.out.printf("%d ", i++);
         }
 
+        // newline for the power loop
+        System.out.print("\n");
 
-        // do while
-        i = 2;
-        do {
+        // do while refactored to for
+        for (int i = 2; i <= 1_000_000; i = (int) Math.pow(i, 2)) {
             System.out.printf("%d\n", i);
-            i = (int) Math.pow(i, 2);
-        } while (i <= 1_000_000);
+        }
     }
 }
