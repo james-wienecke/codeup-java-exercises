@@ -120,10 +120,5 @@ public class ControlFlowExercises {
             if (sc.nextLine().equals("n")) gradeContinue = false;
         } while (gradeContinue);
         System.out.println("Thank you! Have a great day!");
-
-        System.out.println("Testing");
-        for (long i = 2; i < 100_000_000; i*=2) {
-            System.out.printf("%d\n", i);
-        }
     }
 }
