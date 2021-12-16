@@ -86,11 +86,11 @@ public class ConsoleExercises {
         - Calculate the volume of the rooms in addition to the area and perimeter.
          */
 
-        System.out.printf("The perimeter of the room is %fm.", (width * 2 + length * 2));
-        System.out.printf("\nThe area of the room is %fm^2.", (width * length));
+        System.out.printf("The perimeter of the room is %f.2m.", (width * 2 + length * 2));
+        System.out.printf("\nThe area of the room is %f.2m^2.", (width * length));
 
 
-        System.out.printf("\nThe volume of the room is %fm^3.", (width * length * height));
+        System.out.printf("\nThe volume of the room is %f.2m^3.", (width * length * height));
 
         /*
         The Scanner class can be told specifically what characters or pattern
