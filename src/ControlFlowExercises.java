@@ -73,8 +73,7 @@ public class ControlFlowExercises {
             }
             sc.nextLine();
             System.out.println("Do you want to see another table? (y/n)");
-            String userDecision = sc.nextLine();
-            if (userDecision.equals("n")) {
+            if (sc.nextLine().equals("n")) {
                 tableContinue = false;
             }
         } while (tableContinue);
@@ -104,20 +103,20 @@ public class ControlFlowExercises {
             String letterGrade = "A+";
             if (userGrade < 60) letterGrade = "F";
             else if (userGrade < 62) letterGrade = "D-";
-            else if (userGrade < 66) letterGrade = "D";
-            else if (userGrade < 70) letterGrade = "D+";
+            else if (userGrade < 64) letterGrade = "D";
+            else if (userGrade < 66) letterGrade = "D+";
             else if (userGrade < 72) letterGrade = "C-";
             else if (userGrade < 76) letterGrade = "C";
             else if (userGrade < 80) letterGrade = "C+";
             else if (userGrade < 82) letterGrade = "B-";
-            else if (userGrade < 86) letterGrade = "B";
-            else if (userGrade < 90) letterGrade = "B+";
+            else if (userGrade < 85) letterGrade = "B";
+            else if (userGrade < 88) letterGrade = "B+";
             else if (userGrade < 92) letterGrade = "A-";
             else if (userGrade < 96) letterGrade = "A";
 
             System.out.printf("\n%d is a %s grade.", userGrade, letterGrade);
             sc.nextLine();
-            System.out.println("Do you wish to continue? (y/n)");
+            System.out.println("\nDo you wish to continue? (y/n)");
             if (sc.nextLine().equals("n")) gradeContinue = false;
         } while (gradeContinue);
         System.out.println("Thank you! Have a great day!");
