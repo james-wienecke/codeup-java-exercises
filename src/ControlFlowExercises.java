@@ -7,7 +7,7 @@ public class ControlFlowExercises {
         sc.useDelimiter("\n");
         /* Loop Basics */
         // while refactored to for
-        for (int i = 5; i <= 15; i++) {
+        for (short i = 5; i <= 15; i++) {
             System.out.printf("%d ", i++);
         }
 
@@ -27,7 +27,7 @@ public class ControlFlowExercises {
         //For multiples of three: print “Fizz” instead of the number.
         //For the multiples of five: print “Buzz”.
         //For numbers which are multiples of both three and five: print “FizzBuzz”.
-        for (int i = 1; i <= 100; i++) {
+        for (short i = 1; i <= 100; i++) {
             if ((i % 3 == 0) && (i % 5 == 0)) {
                 System.out.println("FizzBuzz");
             } else if (i % 5 == 0) {
@@ -99,7 +99,7 @@ public class ControlFlowExercises {
         boolean gradeContinue = true;
         do {
             System.out.println("Please enter a numerical grade:");
-            int userGrade = sc.nextInt();
+            short userGrade = sc.nextShort();
             String letterGrade = "A+";
             if (userGrade < 60) letterGrade = "F";
             else if (userGrade < 62) letterGrade = "D-";
@@ -114,7 +114,7 @@ public class ControlFlowExercises {
             else if (userGrade < 92) letterGrade = "A-";
             else if (userGrade < 96) letterGrade = "A";
 
-            System.out.printf("\n%d is a %s grade.", userGrade, letterGrade);
+            System.out.printf("%d is a %s grade.", userGrade, letterGrade);
             sc.nextLine();
             System.out.println("\nDo you wish to continue? (y/n)");
             if (sc.nextLine().equals("n")) gradeContinue = false;
