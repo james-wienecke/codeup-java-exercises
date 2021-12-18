@@ -28,12 +28,15 @@ public class MethodsExercises {
     private static double addition(double a, double b) {
         return a + b;
     }
+
     private static double subtraction(double a, double b) {
         return a - b;
     }
+
     private static double multiplication(double a, double b) {
         return a * b;
     }
+
     private static double division(double a, double b) {
         return a / b;
     }
