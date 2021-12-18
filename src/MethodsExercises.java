@@ -20,10 +20,11 @@ public class MethodsExercises {
     Food for thought: What happens if we try to divide by zero? What should happen?
      */
     public static void main(String[] args) {
-        System.out.print(addition(1, 2));
-        System.out.print(subtraction(4, 2));
-        System.out.print(multiplication(7, 4));
-        System.out.print(division(1, 2));
+        System.out.println(addition(1, 2));
+        System.out.println(subtraction(4, 2));
+        System.out.println(multiplication(7, 4));
+        System.out.println(division(1, 2));
+        System.out.println(modulus(25, 6));
     }
     private static double addition(double a, double b) {
         return a + b;
@@ -39,5 +40,9 @@ public class MethodsExercises {
 
     private static double division(double a, double b) {
         return a / b;
+    }
+
+    private static double modulus(double a, double b) {
+        return a % b;
     }
 }
