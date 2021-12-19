@@ -46,19 +46,29 @@ public class MethodsExercises {
     private static double multiplication(double a, double b) {
         // original solution
 //        return a * b;
+
         // no * operator
 //        double sum = 0;
 //        for (double i = b; i > 0; i--) {
 //            sum += a;
 //        }
 //        return sum;
+
         // recursion
+        // we want the sum of a added b times
+
+        // this first conditional is technically unnecessary but by making this check
+        // we will try to make the 'b' number smaller than 'a' so that we call this function recursively
+        // fewer times
         if (a < b)
             return multiplication(b, a);
 
-        else if (b != 0)
+        // so long as b != 0, we recursively build a sum to return from a added to itself
+        if (b != 0)
             return (a + multiplication(a, b - 1));
 
+        // when 'b' bottoms out (whether by initial assignment to 0 or because we've called it recursively as b - 1
+        // down to zero), we return zero to the 'a' summation chain and do not call this method again.
         else
             return 0;
     }
