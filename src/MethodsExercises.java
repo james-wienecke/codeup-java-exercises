@@ -25,6 +25,8 @@ public class MethodsExercises {
         System.out.println(multiplication(7, 4));
         System.out.println(multiplication(20, 5));
         System.out.println(multiplication(9, 5));
+        System.out.println(multiplication(2, 5));
+        System.out.println(multiplication(0, 5));
 //        System.out.println(division(1, 2));
 //        System.out.println(modulus(25, 6));
     }
@@ -45,11 +47,20 @@ public class MethodsExercises {
         // original solution
 //        return a * b;
         // no * operator
-        double sum = 0;
-        for (double i = b; i > 0; i--) {
-            sum += a;
-        }
-        return sum;
+//        double sum = 0;
+//        for (double i = b; i > 0; i--) {
+//            sum += a;
+//        }
+//        return sum;
+        // recursion
+        if (a < b)
+            return multiplication(b, a);
+
+        else if (b != 0)
+            return (a + multiplication(a, b - 1));
+
+        else
+            return 0;
     }
 
     private static double division(double a, double b) {
