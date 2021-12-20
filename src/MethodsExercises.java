@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MethodsExercises {
     /*
     Create a class named MethodsExercises. Inside of your class, write code to create the
@@ -19,6 +21,8 @@ public class MethodsExercises {
 
     Food for thought: What happens if we try to divide by zero? What should happen?
      */
+
+    private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 //        System.out.println(addition(1, 2));
 //        System.out.println(subtraction(4, 2));
@@ -94,7 +98,12 @@ public class MethodsExercises {
 
     Hint: recursion might be helpful here!
      */
-    private static int getInteger(int a, int b) {
-
+    private static int getInteger(int min, int max) {
+        System.out.printf("Enter a number between %d and %d\n", min, max);
+        int userInt = sc.nextInt();
+        if (userInt < min || userInt > max)
+            return getInteger(min, max);
+        else
+            return  userInt;
     }
 }
