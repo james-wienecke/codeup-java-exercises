@@ -80,4 +80,21 @@ public class MethodsExercises {
     private static double modulus(double a, double b) {
         return a % b;
     }
+
+    /* Create a method that validates that user input is in a certain range
+
+    The method signature should look like this:
+    public static int getInteger(int min, int max);
+
+    and is used like this:
+    System.out.print("Enter a number between 1 and 10: ");
+    int userInput = getInteger(1, 10);
+
+    If the input is invalid, prompt the user again.
+
+    Hint: recursion might be helpful here!
+     */
+    private static int getInteger(int a, int b) {
+
+    }
 }
