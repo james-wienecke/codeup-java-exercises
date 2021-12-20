@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class MethodsExercises {
     /*
     Create a class named MethodsExercises. Inside of your class, write code to create the
@@ -19,16 +21,22 @@ public class MethodsExercises {
 
     Food for thought: What happens if we try to divide by zero? What should happen?
      */
+
+    private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 //        System.out.println(addition(1, 2));
 //        System.out.println(subtraction(4, 2));
-        System.out.println(multiplication(7, 4));
-        System.out.println(multiplication(20, 5));
-        System.out.println(multiplication(9, 5));
-        System.out.println(multiplication(2, 5));
-        System.out.println(multiplication(0, 5));
+//        System.out.println(multiplication(7, 4));
+//        System.out.println(multiplication(20, 5));
+//        System.out.println(multiplication(9, 5));
+//        System.out.println(multiplication(2, 5));
+//        System.out.println(multiplication(0, 5));
 //        System.out.println(division(1, 2));
 //        System.out.println(modulus(25, 6));
+
+        System.out.println(getInteger(1, 10));
+        System.out.println(getInteger(-5, 9));
+
     }
     private static double addition(double a, double b) {
         return a + b;
@@ -79,5 +87,27 @@ public class MethodsExercises {
 
     private static double modulus(double a, double b) {
         return a % b;
+    }
+
+    /* Create a method that validates that user input is in a certain range
+
+    The method signature should look like this:
+    public static int getInteger(int min, int max);
+
+    and is used like this:
+    System.out.print("Enter a number between 1 and 10: ");
+    int userInput = getInteger(1, 10);
+
+    If the input is invalid, prompt the user again.
+
+    Hint: recursion might be helpful here!
+     */
+    private static int getInteger(int min, int max) {
+        System.out.printf("Enter a number between %d and %d\n", min, max);
+        int userInt = sc.nextInt();
+        if (userInt < min || userInt > max)
+            return getInteger(min, max);
+        else
+            return  userInt;
     }
 }
