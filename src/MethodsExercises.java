@@ -26,13 +26,17 @@ public class MethodsExercises {
     public static void main(String[] args) {
 //        System.out.println(addition(1, 2));
 //        System.out.println(subtraction(4, 2));
-        System.out.println(multiplication(7, 4));
-        System.out.println(multiplication(20, 5));
-        System.out.println(multiplication(9, 5));
-        System.out.println(multiplication(2, 5));
-        System.out.println(multiplication(0, 5));
+//        System.out.println(multiplication(7, 4));
+//        System.out.println(multiplication(20, 5));
+//        System.out.println(multiplication(9, 5));
+//        System.out.println(multiplication(2, 5));
+//        System.out.println(multiplication(0, 5));
 //        System.out.println(division(1, 2));
 //        System.out.println(modulus(25, 6));
+
+        System.out.println(getInteger(1, 10));
+        System.out.println(getInteger(-5, 9));
+
     }
     private static double addition(double a, double b) {
         return a + b;
