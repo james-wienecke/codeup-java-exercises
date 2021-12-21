@@ -27,22 +27,17 @@ public class MethodsExercises {
 //        System.out.println(addition(1, 2));
 //        System.out.println(subtraction(4, 2));
 //        System.out.println(multiplication(7, 4));
-//        System.out.println(multiplication(20, 5));
-//        System.out.println(multiplication(9, 5));
-//        System.out.println(multiplication(2, 5));
-//        System.out.println(multiplication(0, 5));
 //        System.out.println(division(1, 2));
 //        System.out.println(modulus(25, 6));
 
 //        System.out.println(getInteger(1, 10));
 //        System.out.println(getInteger(-5, 9));
 
-//        getFactorial(3);
-//        getFactorial(2);
-//        getFactorial(9);
-//        getFactorial(1);
+        // factorial method with user input on factorial identity and control flow
         do {
-            getFactorial(getInteger(1, 9));
+            String factorial = getFactorial(getInteger(1, 9));
+            System.out.println(factorial);
+//            getFactorial(getInteger(1, 9));
             System.out.println("Do you want to see another factorial? (y/n)");
             if (sc.next().equalsIgnoreCase("n")) {
                 break;
@@ -143,15 +138,19 @@ public class MethodsExercises {
 
      */
 
-    private static void getFactorial(int num) {
+    /* String getFactorial(int)
+       Preforms a factorial on the provided integer and builds up a formatted String of the expanded form and result.
+     */
+    private static String getFactorial(int num) {
         // initialize the factorial loop with the first iteration already complete (1*1 is always 1)
-        long result = 1;
         String resultStr = "1";
-        // loop begins at 2;
+        long result = 1;
+        // loop begins at 2 as it's a waste to start with 1!
+        // on second thought the compiler probably takes care of this but the String format stuff makes me paranoid :F
         for (int i = 2; i <= num; i++) {
             resultStr += String.format(" x %d", i);
             result = result * i;
         }
-        System.out.printf("%d! = %16s = %d\n", num, resultStr, result);
+        return String.format("%d! = %16s = %d", num, resultStr, result);
     }
 }
