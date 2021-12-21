@@ -34,8 +34,8 @@ public class MethodsExercises {
 //        System.out.println(division(1, 2));
 //        System.out.println(modulus(25, 6));
 
-        System.out.println(getInteger(1, 10));
-        System.out.println(getInteger(-5, 9));
+//        System.out.println(getInteger(1, 10));
+//        System.out.println(getInteger(-5, 9));
 
     }
     private static double addition(double a, double b) {
@@ -109,5 +109,35 @@ public class MethodsExercises {
             return getInteger(min, max);
         else
             return  userInt;
+    }
+
+    /* Calculate the factorial of a number.
+
+    Prompt the user to enter an integer from 1 to 10.
+    Display the factorial of the number entered by the user.
+    Ask if the user wants to continue.
+    Use a for loop to calculate the factorial.
+    Assume that the user will enter an integer, but verify it’s between 1 and 10.
+    Use the long type to store the factorial.
+    Continue only if the user agrees to.
+    A factorial is a number multiplied by each of the numbers before it.
+    Factorials are denoted by the exclamation point (n!). Ex:
+
+
+    1! = 1               = 1
+    2! = 1 x 2           = 2
+    3! = 1 x 2 x 3       = 6
+    4! = 1 x 2 x 3 x 4   = 24
+
+     */
+
+    private static long getFactorial(int num) {
+        int result = 1;
+        String resultStr = "";
+        for (int i = 1; i <= num; i++) {
+            resultStr += String.format("%d x ", i);
+            result = result * i;
+        }
+        System.out.printf("%d! = %14s = %d", num, resultStr, result);
     }
 }
