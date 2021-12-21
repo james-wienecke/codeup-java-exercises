@@ -36,6 +36,8 @@ public class MethodsExercises {
 
 //        System.out.println(getInteger(1, 10));
 //        System.out.println(getInteger(-5, 9));
+        getFactorial(3);
+        getFactorial(2);
 
     }
     private static double addition(double a, double b) {
@@ -131,13 +133,13 @@ public class MethodsExercises {
 
      */
 
-    private static long getFactorial(int num) {
+    private static void getFactorial(int num) {
         int result = 1;
-        String resultStr = "";
-        for (int i = 1; i <= num; i++) {
-            resultStr += String.format("%d x ", i);
+        String resultStr = "1 x";
+        for (int i = 2; i <= num; i++) {
+            resultStr += String.format(" x %d", i);
             result = result * i;
         }
-        System.out.printf("%d! = %14s = %d", num, resultStr, result);
+        System.out.printf("%d! = %14s = %d\n", num, resultStr, result);
     }
 }
