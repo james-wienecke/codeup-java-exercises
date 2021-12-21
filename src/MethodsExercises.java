@@ -38,6 +38,8 @@ public class MethodsExercises {
 //        System.out.println(getInteger(-5, 9));
         getFactorial(3);
         getFactorial(2);
+        getFactorial(9);
+        getFactorial(1);
 
     }
     private static double addition(double a, double b) {
@@ -134,12 +136,14 @@ public class MethodsExercises {
      */
 
     private static void getFactorial(int num) {
+        // initialize the factorial loop with the first iteration already complete (1*1 is always 1)
         int result = 1;
-        String resultStr = "1 x";
+        String resultStr = "1";
+        // loop begins at 2;
         for (int i = 2; i <= num; i++) {
             resultStr += String.format(" x %d", i);
             result = result * i;
         }
-        System.out.printf("%d! = %14s = %d\n", num, resultStr, result);
+        System.out.printf("%d! = %16s = %d\n", num, resultStr, result);
     }
 }
