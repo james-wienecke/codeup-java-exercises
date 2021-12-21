@@ -115,7 +115,7 @@ public class MethodsExercises {
     Hint: recursion might be helpful here!
      */
     private static int getInteger(int min, int max) {
-        System.out.printf("Enter a number between %d and %d\n", min, max);
+        System.out.printf("Enter a number from %d to %d\n", min, max);
         int userInt = sc.nextInt();
         if (userInt < min || userInt > max)
             return getInteger(min, max);
