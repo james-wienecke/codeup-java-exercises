@@ -36,10 +36,18 @@ public class MethodsExercises {
 
 //        System.out.println(getInteger(1, 10));
 //        System.out.println(getInteger(-5, 9));
-        getFactorial(3);
-        getFactorial(2);
-        getFactorial(9);
-        getFactorial(1);
+
+//        getFactorial(3);
+//        getFactorial(2);
+//        getFactorial(9);
+//        getFactorial(1);
+        do {
+            getFactorial(getInteger(1, 9));
+            System.out.println("Do you want to see another factorial? (y/n)");
+            if (sc.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        } while (true);
 
     }
     private static double addition(double a, double b) {
@@ -137,7 +145,7 @@ public class MethodsExercises {
 
     private static void getFactorial(int num) {
         // initialize the factorial loop with the first iteration already complete (1*1 is always 1)
-        int result = 1;
+        long result = 1;
         String resultStr = "1";
         // loop begins at 2;
         for (int i = 2; i <= num; i++) {
