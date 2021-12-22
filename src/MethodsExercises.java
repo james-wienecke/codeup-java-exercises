@@ -33,18 +33,10 @@ public class MethodsExercises {
 //        System.out.println(getInteger(1, 10));
 //        System.out.println(getInteger(-5, 9));
 
-        // factorial method with user input on factorial identity and control flow
-        do {
-            String factorial = getFactorial(getInteger(1, 9));
-            System.out.println(factorial);
-//            getFactorial(getInteger(1, 9));
-            System.out.println("Do you want to see another factorial? (y/n)");
-            if (sc.next().equalsIgnoreCase("n")) {
-                break;
-            }
-        } while (true);
 
+        factorialUserInputLoop();
     }
+
     private static double addition(double a, double b) {
         return a + b;
     }
@@ -138,19 +130,85 @@ public class MethodsExercises {
 
      */
 
-    /* String getFactorial(int)
-       Preforms a factorial on the provided integer and builds up a formatted String of the expanded form and result.
+
+    /*
+    Test the application and find the integer for the highest factorial that can be
+    accurately calculated by this application, then modify the prompt so that it prompts the user for
+    a number "from 1 to {the highest integer that returns accurate factorial calculation}".
+    Don’t forget to change your verification too!
+
+    Use recursion to implement the factorial.
      */
-    private static String getFactorial(int num) {
-        // initialize the factorial loop with the first iteration already complete (1*1 is always 1)
-        String resultStr = "1";
-        long result = 1;
-        // loop begins at 2 as it's a waste to start with 1!
-        // on second thought the compiler probably takes care of this but the String format stuff makes me paranoid :F
-        for (int i = 2; i <= num; i++) {
-            resultStr += String.format(" x %d", i);
-            result = result * i;
+
+
+    private static void testLongMaxSafeFactorial() {
+        // this method was utilized to test max safe value for storing factorial products in the long data type
+        // my results suggest the max value for n is 20
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
+            long factorialProduct = calcFactorial(i);
+            System.out.println(factorialProduct);
+            if (factorialProduct <= 0) {
+                System.out.println(i - 1);
+                break;
+            }
         }
-        return String.format("%d! = %16s = %d", num, resultStr, result);
+    }
+
+    private static long calcFactorial(int n, int i, long product) {
+        // factorial is the product of all integers (i), from 1 to n
+        if (i <= n) {
+            return calcFactorial(n, i + 1, product * i);
+        } else {
+            return product;
+        }
+
+    }
+
+    // overloaded method to allow simple initialization :)
+    private static long calcFactorial(int n) {
+        return calcFactorial(n, 2, 1);
+    }
+
+    // kinda unnecessary lol but it was fun trying this out
+    // my time with C has made me much less nervous about declaring strings with semi-fixed sizes
+    private static int calcFactorialStringLength(int n) {
+        // assume the first part of the resultStr is only single digit, we'll correct in conditional
+        int result = 6;
+        if (n < 9)
+            // all values 1-9 take up 4 characters
+            result += n * 4;
+        else
+            // n % 10 when n > 9 gets us the tens column space. adding 40 gives us the 1-9 space
+            // adding 1 more gives us the tens column space in the first part
+            result += ((n % 10) * 5) + 41;
+        // only the very highest values of n require > 16 digits to display, so we kinda undershoot hoping most cases
+        // will fit well within
+        result += 16;
+        return result;
+    }
+
+    private static String formatFactorial(int n) {
+        // using StringBuilder here for more performant loop concatenation
+        StringBuilder resultStr = new StringBuilder(calcFactorialStringLength(n));
+        // set up the initial declaration for factorial string (eg. 5! = 1...);
+        resultStr.append(n).append("! = 1");
+        for (int i = 2; i <= n; i++) {
+            // append factorial steps (eg. ... x 2...)
+            resultStr.append(" x ").append(i);
+        }
+        // cap off the with the factorial product!
+        return resultStr.append(" = ").append(calcFactorial(n)).toString();
+    }
+
+    private static void factorialUserInputLoop() {
+        // factorial method with user input on factorial identity and control flow
+        do {
+            String factorial = formatFactorial(getInteger(1, 20));
+            System.out.println(factorial);
+            System.out.println("Do you want to see another factorial? (y/n)");
+            if (sc.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        } while (true);
     }
 }
