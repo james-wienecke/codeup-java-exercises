@@ -42,7 +42,12 @@ public class MethodsExercises {
 //                break;
 //            }
 //        } while (true);
-        testLongMaxSafeFactorial();
+//        testLongMaxSafeFactorial();
+        System.out.println(formatFactorial(5));
+        System.out.println(formatFactorial(2));
+        System.out.println(formatFactorial(9));
+        System.out.println(formatFactorial(12));
+        System.out.println(formatFactorial(20));
     }
     private static double addition(double a, double b) {
         return a + b;
@@ -188,11 +193,34 @@ public class MethodsExercises {
         }
     }
 
-    private static String formatFactorial(int n, long product) {
-        String resultStr = String.format("%d! = ", n);
-        for (int i = 1; i <= n; i++) {
-            resultStr += String.format("%d x ", i);
+    // kinda unnecessary lol but it was fun trying this out
+    // my time with C has made me much less nervous about declaring strings with semi-fixed sizes
+    private static int calcFactorialStringLength(int n) {
+        // assume the first part of the resultStr is only single digit, we'll correct in conditional
+        int result = 6;
+        if (n < 9)
+            // all values 1-9 take up 4 characters
+            result += n * 4;
+        else
+            // n % 10 when n > 9 gets us the tens column space. adding 40 gives us the 1-9 space
+            // adding 1 more gives us the tens column space in the first part
+            result += ((n % 10) * 5) + 41;
+        // only the very highest values of n require > 16 digits to display, so we kinda undershoot hoping most cases
+        // will fit well within
+        result += 16;
+        return result;
+    }
+
+    private static String formatFactorial(int n) {
+        // using StringBuilder here for more performant loop concatenation
+        StringBuilder resultStr = new StringBuilder(calcFactorialStringLength(n));
+        // set up the initial declaration for factorial string (eg. 5! = 1...);
+        resultStr.append(n).append("! = 1");
+        for (int i = 2; i <= n; i++) {
+            // append factorial steps (eg. ... x 2...)
+            resultStr.append(" x ").append(i);
         }
-        return resultStr + String.format("= %d", product);
+        // cap off the with the factorial product!
+        return resultStr.append(" = ").append(calcFactorial(n)).toString();
     }
 }
