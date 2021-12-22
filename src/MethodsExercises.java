@@ -176,11 +176,13 @@ public class MethodsExercises {
     }
 
     private static void testLongMaxSafeFactorial() {
-        for (int i = 0; i < 21; i++) {
+        // this method was utilized to test max safe value for storing factorial products in the long data type
+        // my results suggest the max value for n is 20
+        for (int i = 0; i < Integer.MAX_VALUE; i++) {
             long factorialProduct = calcFactorial(i);
             System.out.println(factorialProduct);
             if (factorialProduct <= 0) {
-                System.out.println(i);
+                System.out.println(i - 1);
                 break;
             }
         }
