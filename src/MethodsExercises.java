@@ -33,21 +33,8 @@ public class MethodsExercises {
 //        System.out.println(getInteger(1, 10));
 //        System.out.println(getInteger(-5, 9));
 
-        // factorial method with user input on factorial identity and control flow
-//        do {
-//            String factorial = getFactorial(getInteger(1, 9));
-//            System.out.println(factorial);
-//            System.out.println("Do you want to see another factorial? (y/n)");
-//            if (sc.next().equalsIgnoreCase("n")) {
-//                break;
-//            }
-//        } while (true);
-//        testLongMaxSafeFactorial();
-        System.out.println(formatFactorial(5));
-        System.out.println(formatFactorial(2));
-        System.out.println(formatFactorial(9));
-        System.out.println(formatFactorial(12));
-        System.out.println(formatFactorial(20));
+
+        factorialUserInputLoop();
     }
     private static double addition(double a, double b) {
         return a + b;
@@ -142,21 +129,6 @@ public class MethodsExercises {
 
      */
 
-    /* String getFactorial(int)
-       Preforms a factorial on the provided integer and builds up a formatted String of the expanded form and result.
-     */
-    private static String getFactorial(int num) {
-        // initialize the factorial loop with the first iteration already complete (1*1 is always 1)
-        String resultStr = "1";
-        long result = 1;
-        // loop begins at 2 as it's a waste to start with 1!
-        // on second thought the compiler probably takes care of this but the String format stuff makes me paranoid :F
-        for (int i = 2; i <= num; i++) {
-            resultStr += String.format(" x %d", i);
-            result = result * i;
-        }
-        return String.format("%d! = %16s = %d", num, resultStr, result);
-    }
 
     /*
     Test the application and find the integer for the highest factorial that can be
@@ -166,19 +138,7 @@ public class MethodsExercises {
 
     Use recursion to implement the factorial.
      */
-    private static long calcFactorial(int n, int i, long product) {
-        // factorial is the product of all integers (i), from 1 to n
-        if (i <= n) {
-            return calcFactorial(n, i + 1, product * i);
-        } else {
-            return product;
-        }
 
-    }
-
-    private static long calcFactorial(int n) {
-        return calcFactorial(n, 2, 1);
-    }
 
     private static void testLongMaxSafeFactorial() {
         // this method was utilized to test max safe value for storing factorial products in the long data type
@@ -191,6 +151,20 @@ public class MethodsExercises {
                 break;
             }
         }
+    }
+
+    private static long calcFactorial(int n, int i, long product) {
+        // factorial is the product of all integers (i), from 1 to n
+        if (i <= n) {
+            return calcFactorial(n, i + 1, product * i);
+        } else {
+            return product;
+        }
+
+    }
+
+    private static long calcFactorial(int n) {
+        return calcFactorial(n, 2, 1);
     }
 
     // kinda unnecessary lol but it was fun trying this out
@@ -222,5 +196,17 @@ public class MethodsExercises {
         }
         // cap off the with the factorial product!
         return resultStr.append(" = ").append(calcFactorial(n)).toString();
+    }
+
+    private static void factorialUserInputLoop() {
+        // factorial method with user input on factorial identity and control flow
+        do {
+            String factorial = formatFactorial(getInteger(1, 20));
+            System.out.println(factorial);
+            System.out.println("Do you want to see another factorial? (y/n)");
+            if (sc.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        } while (true);
     }
 }
