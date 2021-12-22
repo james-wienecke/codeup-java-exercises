@@ -187,4 +187,12 @@ public class MethodsExercises {
             }
         }
     }
+
+    private static String formatFactorial(int n, long product) {
+        String resultStr = String.format("%d! = ", n);
+        for (int i = 1; i <= n; i++) {
+            resultStr += String.format("%d x ", i);
+        }
+        return resultStr + String.format("= %d", product);
+    }
 }
