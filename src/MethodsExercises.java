@@ -34,16 +34,15 @@ public class MethodsExercises {
 //        System.out.println(getInteger(-5, 9));
 
         // factorial method with user input on factorial identity and control flow
-        do {
-            String factorial = getFactorial(getInteger(1, 9));
-            System.out.println(factorial);
-//            getFactorial(getInteger(1, 9));
-            System.out.println("Do you want to see another factorial? (y/n)");
-            if (sc.next().equalsIgnoreCase("n")) {
-                break;
-            }
-        } while (true);
-
+//        do {
+//            String factorial = getFactorial(getInteger(1, 9));
+//            System.out.println(factorial);
+//            System.out.println("Do you want to see another factorial? (y/n)");
+//            if (sc.next().equalsIgnoreCase("n")) {
+//                break;
+//            }
+//        } while (true);
+        testLongMaxSafeFactorial();
     }
     private static double addition(double a, double b) {
         return a + b;
@@ -152,5 +151,38 @@ public class MethodsExercises {
             result = result * i;
         }
         return String.format("%d! = %16s = %d", num, resultStr, result);
+    }
+
+    /*
+    Test the application and find the integer for the highest factorial that can be
+    accurately calculated by this application, then modify the prompt so that it prompts the user for
+    a number "from 1 to {the highest integer that returns accurate factorial calculation}".
+    Don’t forget to change your verification too!
+
+    Use recursion to implement the factorial.
+     */
+    private static long calcFactorial(int n, int i, long product) {
+        // factorial is the product of all integers (i), from 1 to n
+        if (i <= n) {
+            return calcFactorial(n, i + 1, product * i);
+        } else {
+            return product;
+        }
+
+    }
+
+    private static long calcFactorial(int n) {
+        return calcFactorial(n, 2, 1);
+    }
+
+    private static void testLongMaxSafeFactorial() {
+        for (int i = 0; i < 21; i++) {
+            long factorialProduct = calcFactorial(i);
+            System.out.println(factorialProduct);
+            if (factorialProduct <= 0) {
+                System.out.println(i);
+                break;
+            }
+        }
     }
 }
