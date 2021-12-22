@@ -36,6 +36,7 @@ public class MethodsExercises {
 
         factorialUserInputLoop();
     }
+
     private static double addition(double a, double b) {
         return a + b;
     }
@@ -163,6 +164,7 @@ public class MethodsExercises {
 
     }
 
+    // overloaded method to allow simple initialization :)
     private static long calcFactorial(int n) {
         return calcFactorial(n, 2, 1);
     }
