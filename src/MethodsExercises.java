@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MethodsExercises {
@@ -34,7 +35,8 @@ public class MethodsExercises {
 //        System.out.println(getInteger(-5, 9));
 
 
-        factorialUserInputLoop();
+//        factorialUserInputLoop();
+        diceSimMain();
     }
 
     private static double addition(double a, double b) {
@@ -242,6 +244,7 @@ public class MethodsExercises {
         for (int i = 0; i < dice.length; i++) {
             rolls[i] = randomInRange(dice[i]);
         }
+        System.out.println(Arrays.toString(rolls));
     }
 
     private static int randomInRange(int min, int max) {
