@@ -211,4 +211,28 @@ public class MethodsExercises {
             }
         } while (true);
     }
+
+    /* Create an application that simulates dice rolling.
+
+    Ask the user to enter the number of sides for a pair of dice.
+    Prompt the user to roll the dice.
+    "Roll" two n-sided dice, display the results of each, and then ask the user if he/she wants to roll the dice again.
+    Use static methods to implement the method(s) that generate the random numbers.
+    Use the .random method of the java.lang.Math class to generate random numbers.
+     */
+
+    private static void diceSimMain() {
+        do {
+            // take user input on dice type
+            System.out.println("Enter the number of sides for the dice you wish to roll");
+            // simulate dice roll
+            // diceSimRoll(dice)
+            // allow exit
+            System.out.println("Do you want to roll other dice? (y/n)");
+            if (sc.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        } while (true);
+    }
+
 }
