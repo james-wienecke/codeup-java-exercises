@@ -224,7 +224,6 @@ public class MethodsExercises {
     Use the .random method of the java.lang.Math class to generate random numbers.
      */
 
-
     private static void diceSimMain() {
         do {
 
@@ -273,17 +272,9 @@ public class MethodsExercises {
             System.out.println(Arrays.toString(dieCol.roll()));
         }
     }
-
-    public static int randomInRange(int min, int max) {
-        int range = max - min + 1;
-        return (int) (Math.random() * range) + min;
-    }
-
-    public static int randomInRange(int max) {
-        return randomInRange(1, max);
-    }
 }
 
+// represents a set of some non-zero integer quantity of dice with shared face values. For example, 19x 6-sided die
 class DieCollection {
     private final int faceValue;
     private final int collectionCount;
