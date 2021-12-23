@@ -228,28 +228,32 @@ public class MethodsExercises {
     // dice size = 2
     // dice num = 10
 
-    class DieCollection {
-        private int faceValue;
-        private int collectionCount;
-
-        public DieCollection(int value) {
-            faceValue = value;
-            collectionCount = 1;
-        }
-
-        public DieCollection(int value, int count) {
-            faceValue = value;
-            collectionCount = count;
-        }
-
-        public int[] roll() {
-            int[] rollResults = new int[collectionCount - 1];
-            for (int i = 1; i <= collectionCount; i++) {
-                rollResults[i - 1] = randomInRange(faceValue);
-            }
-            return rollResults;
-        }
-    }
+//    class DieCollection {
+//        private final int faceValue;
+//        private final int collectionCount;
+//
+//        public DieCollection(int value) {
+//            faceValue = value;
+//            collectionCount = 1;
+//        }
+//
+//        public DieCollection(int value, int count) {
+//            faceValue = value;
+//            collectionCount = count;
+//        }
+//
+//        public int[] roll() {
+//            int[] rollResults = new int[collectionCount - 1];
+//            for (int i = 1; i <= collectionCount; i++) {
+//                rollResults[i - 1] = randomInRange(faceValue);
+//            }
+//            return rollResults;
+//        }
+//
+//        public String toString() {
+//            return String.format("faces: %d\ncount: %d", faceValue, collectionCount);
+//        }
+//    }
 
     private static void diceSimMain() {
         do {
@@ -257,6 +261,10 @@ public class MethodsExercises {
             // take user input on dice type
 
             ArrayList<DieCollection> dieSet = new ArrayList<DieCollection>(buildDieSet());
+
+            for (DieCollection dieCol : dieSet) {
+                System.out.println(dieCol.toString());
+            }
 //            int[] dice = {diceNum, diceNum};
             // simulate dice roll
 //             diceSimRoll(dice);
@@ -296,13 +304,21 @@ public class MethodsExercises {
 //    }
 
     private static ArrayList<DieCollection> buildDieSet(ArrayList<DieCollection> dieSet) {
-        // dice sides
         System.out.println("Enter the number of sides for the dice you wish to roll.");
         int diceSides = getInteger(2, 48);
 
-        // dice numbers
         System.out.println("How many of these dice do you wish to roll?");
         int diceCount = getInteger(1, 100);
+
+//        DieCollection dice = new DieCollection(diceSides, diceCount);
+        dieSet.add(new DieCollection(diceSides, diceCount));
+
+        System.out.println("Do you want to enter more dice? (y/n)");
+        if (sc.next().equalsIgnoreCase("n")) {
+            return dieSet;
+        } else {
+            return buildDieSet(dieSet);
+        }
     }
 
     private static ArrayList<DieCollection> buildDieSet() {
@@ -318,12 +334,39 @@ public class MethodsExercises {
         System.out.println(Arrays.toString(rolls));
     }
 
-    private static int randomInRange(int min, int max) {
+    public static int randomInRange(int min, int max) {
         int range = max - min + 1;
         return (int) (Math.random() * range) + min;
     }
 
-    private static int randomInRange(int max) {
+    public static int randomInRange(int max) {
         return randomInRange(1, max);
+    }
+}
+
+class DieCollection {
+    private final int faceValue;
+    private final int collectionCount;
+
+    public DieCollection(int value) {
+        faceValue = value;
+        collectionCount = 1;
+    }
+
+    public DieCollection(int value, int count) {
+        faceValue = value;
+        collectionCount = count;
+    }
+
+    public int[] roll() {
+        int[] rollResults = new int[collectionCount - 1];
+        for (int i = 1; i <= collectionCount; i++) {
+            rollResults[i - 1] = (int) (Math.random() * (faceValue - 1)) + 1;
+        }
+        return rollResults;
+    }
+
+    public String toString() {
+        return String.format("faces: %d\ncount: %d", faceValue, collectionCount);
     }
 }
