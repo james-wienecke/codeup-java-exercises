@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -223,14 +224,42 @@ public class MethodsExercises {
     Use the .random method of the java.lang.Math class to generate random numbers.
      */
 
+    // dice set
+    // dice size = 2
+    // dice num = 10
+
+    class DieCollection {
+        private int faceValue;
+        private int collectionCount;
+
+        public DieCollection(int value) {
+            faceValue = value;
+            collectionCount = 1;
+        }
+
+        public DieCollection(int value, int count) {
+            faceValue = value;
+            collectionCount = count;
+        }
+
+        public int[] roll() {
+            int[] rollResults = new int[collectionCount - 1];
+            for (int i = 1; i <= collectionCount; i++) {
+                rollResults[i - 1] = randomInRange(faceValue);
+            }
+            return rollResults;
+        }
+    }
+
     private static void diceSimMain() {
         do {
+//            ArrayList<int[]> diceSet = new ArrayList<>()
             // take user input on dice type
-            System.out.println("Enter the number of sides for the dice you wish to roll");
-            int diceNum = getInteger(2, 48);
-            int[] dice = {diceNum, diceNum};
+
+            ArrayList<DieCollection> dieSet = new ArrayList<DieCollection>(buildDieSet());
+//            int[] dice = {diceNum, diceNum};
             // simulate dice roll
-             diceSimRoll(dice);
+//             diceSimRoll(dice);
             // allow exit
             System.out.println("Do you want to roll other dice? (y/n)");
             if (sc.next().equalsIgnoreCase("n")) {
@@ -239,11 +268,53 @@ public class MethodsExercises {
         } while (true);
     }
 
+//    private static int[][] diceSimBuildDiceRow(int[] dice, int[][] diceSet) {
+//        // dice sides
+//        System.out.println("Enter the number of sides for the dice you wish to roll.");
+//        int diceSides = getInteger(2, 48);
+//
+//        // dice numbers
+//        System.out.println("How many of these dice do you wish to roll?");
+//        int diceCount = getInteger(1, 100);
+//
+//        // add new dice to dice set
+//        int[][] newDiceSet = new int[diceSet.length + 1][diceCount];
+//        // copy old dice from set into new set
+//        for (int i = 0; i < diceSet.length; )
+//
+//        // prompt for continue dice entry
+//        System.out.println("Do you want to enter more dice? (y/n)");
+//        if (sc.next().equalsIgnoreCase("n")) {
+//            return
+//        } else {
+//
+//        }
+//
+//
+//        System.out.print("Current dice: ");
+//
+//    }
+
+    private static ArrayList<DieCollection> buildDieSet(ArrayList<DieCollection> dieSet) {
+        // dice sides
+        System.out.println("Enter the number of sides for the dice you wish to roll.");
+        int diceSides = getInteger(2, 48);
+
+        // dice numbers
+        System.out.println("How many of these dice do you wish to roll?");
+        int diceCount = getInteger(1, 100);
+    }
+
+    private static ArrayList<DieCollection> buildDieSet() {
+        return buildDieSet(new ArrayList<DieCollection>());
+    }
+
     private static void diceSimRoll(int[] dice) {
         int[] rolls = new int[dice.length];
         for (int i = 0; i < dice.length; i++) {
             rolls[i] = randomInRange(dice[i]);
         }
+        System.out.print("Dice roll results: ");
         System.out.println(Arrays.toString(rolls));
     }
 
