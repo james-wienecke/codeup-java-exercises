@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MethodsExercises {
@@ -34,7 +36,8 @@ public class MethodsExercises {
 //        System.out.println(getInteger(-5, 9));
 
 
-        factorialUserInputLoop();
+//        factorialUserInputLoop();
+        diceSimMain();
     }
 
     private static double addition(double a, double b) {
@@ -210,5 +213,99 @@ public class MethodsExercises {
                 break;
             }
         } while (true);
+    }
+
+    /* Create an application that simulates dice rolling.
+
+    Ask the user to enter the number of sides for a pair of dice.
+    Prompt the user to roll the dice.
+    "Roll" two n-sided dice, display the results of each, and then ask the user if he/she wants to roll the dice again.
+    Use static methods to implement the method(s) that generate the random numbers.
+    Use the .random method of the java.lang.Math class to generate random numbers.
+     */
+
+    private static void diceSimMain() {
+        do {
+
+            // take user input on dice type, build up a set of dice options
+            ArrayList<DieCollection> dieSet = new ArrayList<DieCollection>(buildDieSet());
+            // simulate dice roll
+             diceSimRoll(dieSet);
+            // allow exit
+            System.out.println("Do you want to start over with new dice? (y/n)");
+            if (sc.next().equalsIgnoreCase("n")) {
+                break;
+            }
+        } while (true);
+    }
+
+    private static ArrayList<DieCollection> buildDieSet(ArrayList<DieCollection> dieSet) {
+        System.out.println("Enter the number of sides for the dice you wish to roll.");
+        int diceSides = getInteger(2, 48);
+
+        System.out.println("How many of these dice do you wish to roll?");
+        int diceCount = getInteger(1, 100);
+
+        dieSet.add(new DieCollection(diceSides, diceCount));
+
+        // display current set of groups of dies entered by user
+        System.out.println("Current set of dice:");
+        for (DieCollection dieCol : dieSet) {
+            System.out.println(dieCol.toString());
+        }
+
+        System.out.println("Do you want to enter more dice? (y/n)");
+        if (sc.next().equalsIgnoreCase("n")) {
+            return dieSet;
+        } else {
+            return buildDieSet(dieSet);
+        }
+    }
+
+    private static ArrayList<DieCollection> buildDieSet() {
+        return buildDieSet(new ArrayList<DieCollection>());
+    }
+
+    private static void diceSimRoll(ArrayList<DieCollection> dieSet) {
+        for (DieCollection dieCol : dieSet) {
+            System.out.println(dieCol.toString());
+            System.out.println(Arrays.toString(dieCol.roll()));
+        }
+    }
+}
+
+// represents a set of some non-zero integer quantity of dice with shared face values. For example, 19x 6-sided die
+class DieCollection {
+    private final int faceValue;
+    private final int collectionCount;
+
+    public DieCollection(int value) {
+        faceValue = value;
+        collectionCount = 1;
+    }
+
+    public DieCollection(int value, int count) {
+        faceValue = value;
+        collectionCount = count;
+    }
+
+    public int[] roll() {
+        int[] rollResults = new int[collectionCount];
+        for (int i = 1; i <= collectionCount; i++) {
+            rollResults[i - 1] = (int) (Math.random() * (faceValue)) + 1;
+        }
+        return rollResults;
+    }
+
+    public int getFaceValue() {
+        return faceValue;
+    }
+
+    public int getCollectionCount() {
+        return collectionCount;
+    }
+
+    public String toString() {
+        return String.format("%dx %d-sided die", collectionCount, faceValue);
     }
 }
