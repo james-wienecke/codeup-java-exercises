@@ -225,8 +225,10 @@ public class MethodsExercises {
         do {
             // take user input on dice type
             System.out.println("Enter the number of sides for the dice you wish to roll");
+            int diceNum = getInteger(2, 48);
+            int[] dice = {diceNum, diceNum};
             // simulate dice roll
-            // diceSimRoll(dice)
+             diceSimRoll(dice);
             // allow exit
             System.out.println("Do you want to roll other dice? (y/n)");
             if (sc.next().equalsIgnoreCase("n")) {
@@ -235,4 +237,19 @@ public class MethodsExercises {
         } while (true);
     }
 
+    private static void diceSimRoll(int[] dice) {
+        int[] rolls = new int[dice.length];
+        for (int i = 0; i < dice.length; i++) {
+            rolls[i] = randomInRange(dice[i]);
+        }
+    }
+
+    private static int randomInRange(int min, int max) {
+        int range = max - min + 1;
+        return (int) (Math.random() * range) + min;
+    }
+
+    private static int randomInRange(int max) {
+        return randomInRange(1, max);
+    }
 }
