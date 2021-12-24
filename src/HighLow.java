@@ -27,26 +27,46 @@ public class HighLow {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
+        // setup a new hi-low game
         hiLowGame game = new hiLowGame();
-        byte guessLimit = 4;
+
+        // allow user to set their difficulty
+        byte guessLimit = setDifficulty();
+        if (guessLimit > 0) {
+            System.out.printf("Guess limit: %d\n", guessLimit);
+        }
+        // main game loop
         while (game.isOngoing()) {
+            System.out.println("\t--------------------------------------\t");
+            System.out.println("You guess:");
             game.userGuess(getByte((byte) 1, (byte) 100));
-            if (game.getGuessCount() == guessLimit)
-                System.out.println("Last guess! Make it count!");
-            if ((game.getGuessCount() > guessLimit) && (guessLimit > 0)) {
-                System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
-                System.out.printf("The number was %d, by the way...\n", game.getNumber());
-                break;
+            // difficulty and loss handling only applied if guessLimit is set higher than 0
+            if (guessLimit > 0) {
+                if (game.getGuessCount() == guessLimit)
+                    System.out.println("Last guess! Make it count!");
+                if (game.getGuessCount() > guessLimit) {
+                    System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
+                    System.out.printf("The number was %d, by the way...\n", game.getNumber());
+                    break;
+                }
             }
         }
     }
 
     private static byte getByte(byte min, byte max) {
         byte userByte = sc.nextByte();
-        if (userByte < min || userByte > max)
+        if (userByte < min || userByte > max) {
+            System.out.printf("Invalid input: %d", userByte);
             return getByte(min, max);
-        else
-            return  userByte;
+        } else
+            return userByte;
+    }
+
+    private static byte setDifficulty() {
+        System.out.println("Enter a number to limit the guesses you can make for this round. Max is 99");
+        System.out.println("For unlimited chances, enter '0'.");
+        byte difficulty = getByte((byte) 0, (byte) 100);
+        return difficulty;
     }
 }
 class hiLowGame {
