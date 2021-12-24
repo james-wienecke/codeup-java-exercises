@@ -28,9 +28,9 @@ public class HighLow {
 
     public static void main(String[] args) {
         hiLowGame game = new hiLowGame();
-        do {
+        while (game.ongoing) {
             game.getGuess(getByte((byte) 1, (byte) 100));
-        } while (game.won);
+        }
     }
 
     private static byte getByte(byte min, byte max) {
@@ -45,7 +45,7 @@ class hiLowGame {
     private final byte number;
     private short guessCount = 0;
 
-    public boolean won = false;
+    public boolean ongoing = true;
 
     public hiLowGame() {
         number = (byte) ((Math.random() * 100) + 1);
@@ -53,10 +53,10 @@ class hiLowGame {
                             "I've picked a number between 1 and 100. Try to guess it!");
     }
 
-    public boolean getGuess(byte guess) {
+    public void getGuess(byte guess) {
         guessCount++;
         if (guess == number) {
-            return win();
+            win();
         } else if (guess < number) {
             guessFeedback(true);
         } else if (guess > number) {
@@ -66,18 +66,19 @@ class hiLowGame {
         }
     }
 
-    private boolean guessFeedback(boolean low) {
+    private void guessFeedback(boolean low) {
         if (low) {
             System.out.println("HIGHER");
         } else {
             System.out.println("LOWER");
         }
         System.out.printf("Current guesses: %d\n", guessCount);
-        return false;
+
     }
 
-    private boolean win() {
+    private void win() {
         System.out.println("GOOD GUESS!");
-        return true;
+        System.out.printf("You guessed %d in %d guesses!", number, guessCount);
+        ongoing = false;
     }
 }
