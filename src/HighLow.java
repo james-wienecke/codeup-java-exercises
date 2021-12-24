@@ -28,8 +28,13 @@ public class HighLow {
 
     public static void main(String[] args) {
         hiLowGame game = new hiLowGame();
-        while (game.ongoing) {
-            game.getGuess(getByte((byte) 1, (byte) 100));
+        byte guessLimit = 4;
+        while (game.isOngoing()) {
+            game.userGuess(getByte((byte) 1, (byte) 100));
+            if ((game.getGuessCount() > guessLimit) && (guessLimit > 0)) {
+                System.out.printf("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!\n");
+                break;
+            }
         }
     }
 
@@ -43,9 +48,9 @@ public class HighLow {
 }
 class hiLowGame {
     private final byte number;
-    private short guessCount = 0;
+    private byte guessCount = 0;
 
-    public boolean ongoing = true;
+    private boolean ongoing = true;
 
     public hiLowGame() {
         number = (byte) ((Math.random() * 100) + 1);
@@ -53,17 +58,15 @@ class hiLowGame {
                             "I've picked a number between 1 and 100. Try to guess it!");
     }
 
-    public void getGuess(byte guess) {
+    public void userGuess(byte guess) {
+        // increment the guesses it's taken so far
         guessCount++;
-        if (guess == number) {
+        if (guess == number)
             win();
-        } else if (guess < number) {
+        else if (guess < number)
             guessFeedback(true);
-        } else if (guess > number) {
+        else
             guessFeedback(false);
-        } else {
-            System.out.println("Uh oh, this shouldn't happen!");
-        }
     }
 
     private void guessFeedback(boolean low) {
@@ -80,5 +83,13 @@ class hiLowGame {
         System.out.println("GOOD GUESS!");
         System.out.printf("You guessed %d in %d guesses!", number, guessCount);
         ongoing = false;
+    }
+
+    public boolean isOngoing() {
+        return ongoing;
+    }
+
+    public byte getGuessCount() {
+        return guessCount;
     }
 }
