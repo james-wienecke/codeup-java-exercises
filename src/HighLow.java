@@ -31,8 +31,11 @@ public class HighLow {
         byte guessLimit = 4;
         while (game.isOngoing()) {
             game.userGuess(getByte((byte) 1, (byte) 100));
+            if (game.getGuessCount() == guessLimit)
+                System.out.println("Last guess! Make it count!");
             if ((game.getGuessCount() > guessLimit) && (guessLimit > 0)) {
-                System.out.printf("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!\n");
+                System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
+                System.out.printf("The number was %d, by the way...\n", game.getNumber());
                 break;
             }
         }
@@ -91,5 +94,9 @@ class hiLowGame {
 
     public byte getGuessCount() {
         return guessCount;
+    }
+
+    public byte getNumber() {
+        return number;
     }
 }
