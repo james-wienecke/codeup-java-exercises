@@ -37,14 +37,14 @@ public class HighLow {
         }
         // main game loop
         while (game.isOngoing()) {
-            System.out.println("\t--------------------------------------\t");
+            System.out.println("--------------------------------------");
             System.out.println("You guess:");
             game.userGuess(getByte((byte) 1, (byte) 100));
             // difficulty and loss handling only applied if guessLimit is set higher than 0
-            if (guessLimit > 0) {
-                if (game.getGuessCount() == guessLimit)
+            if (guessLimit > 0 && game.isOngoing()) {
+                if (game.getGuessCount() == guessLimit - 1)
                     System.out.println("Last guess! Make it count!");
-                if (game.getGuessCount() > guessLimit) {
+                if (game.getGuessCount() >= guessLimit) {
                     System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
                     System.out.printf("The number was %d, by the way...\n", game.getNumber());
                     break;
