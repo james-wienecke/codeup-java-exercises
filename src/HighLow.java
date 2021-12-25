@@ -40,15 +40,6 @@ public class HighLow {
             System.out.println("--------------------------------------");
             System.out.println("You guess:");
             game.userGuess(getByte((byte) 1, (byte) 100));
-            // difficulty and loss handling only applied if guessLimit is set higher than 0
-//            if (game.guessLimit > 0 && game.isOngoing()) {
-//                if (game.getGuessCount() == game.guessLimit - 1)
-//                    System.out.println("Last guess! Make it count!");
-//                if (game.getGuessCount() >= game.guessLimit) {
-//                    System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
-//                    System.out.printf("The number was %d, by the way...\n", game.getNumber());
-//                    break;
-//                }
             }
         }
 
@@ -115,13 +106,5 @@ class hiLowGame {
 
     public boolean isOngoing() {
         return ongoing;
-    }
-
-    public byte getGuessCount() {
-        return guessCount;
-    }
-
-    public byte getNumber() {
-        return number;
     }
 }
