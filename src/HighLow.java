@@ -31,8 +31,9 @@ public class HighLow {
         hiLowGame game = new hiLowGame();
 
         // allow user to set their difficulty
-        byte guessLimit = setDifficulty();
-        if (guessLimit > 0) {
+        //byte guessLimit = setDifficulty();
+        setDifficulty(game);
+        if (game.guessLimit > 0) {
             System.out.printf("Guess limit: %d\n", guessLimit);
         }
         // main game loop
@@ -41,10 +42,10 @@ public class HighLow {
             System.out.println("You guess:");
             game.userGuess(getByte((byte) 1, (byte) 100));
             // difficulty and loss handling only applied if guessLimit is set higher than 0
-            if (guessLimit > 0 && game.isOngoing()) {
-                if (game.getGuessCount() == guessLimit - 1)
+            if (game.guessLimit > 0 && game.isOngoing()) {
+                if (game.getGuessCount() == game.guessLimit - 1)
                     System.out.println("Last guess! Make it count!");
-                if (game.getGuessCount() >= guessLimit) {
+                if (game.getGuessCount() >= game.guessLimit) {
                     System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
                     System.out.printf("The number was %d, by the way...\n", game.getNumber());
                     break;
@@ -62,17 +63,16 @@ public class HighLow {
             return userByte;
     }
 
-    private static byte setDifficulty() {
+    private static void setDifficulty(hiLowGame game) {
         System.out.println("Enter a number to limit the guesses you can make for this round. Max is 99");
         System.out.println("For unlimited chances, enter '0'.");
-        byte difficulty = getByte((byte) 0, (byte) 100);
-        return difficulty;
+        game.guessLimit = getByte((byte) 0, (byte) 100);
     }
 }
 class hiLowGame {
     private final byte number;
     private byte guessCount = 0;
-    private byte guessLimit;
+    public byte guessLimit;
     private boolean ongoing = true;
 
     public hiLowGame() {
@@ -81,11 +81,9 @@ class hiLowGame {
                             "I've picked a number between 1 and 100. Try to guess it!");
     }
 
-    private void setDifficulty(byte limit) {
-        System.out.println("Enter a number to limit the guesses you can make for this round. Max is 99");
-        System.out.println("For unlimited chances, enter '0'.");
-        guessLimit = limit;
-    }
+//    public void setGuessLimit(byte limit) {
+//        guessLimit = limit;
+//    }
 
     public void userGuess(byte guess) {
         // increment the guesses it's taken so far
