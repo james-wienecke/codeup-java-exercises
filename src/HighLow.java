@@ -72,13 +72,19 @@ public class HighLow {
 class hiLowGame {
     private final byte number;
     private byte guessCount = 0;
-
+    private byte guessLimit;
     private boolean ongoing = true;
 
     public hiLowGame() {
         number = (byte) ((Math.random() * 100) + 1);
         System.out.println( "---- Welcome to the Hi-Low Game! ----\n" +
                             "I've picked a number between 1 and 100. Try to guess it!");
+    }
+
+    private void setDifficulty(byte limit) {
+        System.out.println("Enter a number to limit the guesses you can make for this round. Max is 99");
+        System.out.println("For unlimited chances, enter '0'.");
+        guessLimit = limit;
     }
 
     public void userGuess(byte guess) {
