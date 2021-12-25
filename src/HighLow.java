@@ -34,7 +34,7 @@ public class HighLow {
         //byte guessLimit = setDifficulty();
         setDifficulty(game);
         if (game.guessLimit > 0) {
-            System.out.printf("Guess limit: %d\n", guessLimit);
+            System.out.printf("Guess limit: %d\n", game.guessLimit);
         }
         // main game loop
         while (game.isOngoing()) {
@@ -80,10 +80,6 @@ class hiLowGame {
         System.out.println( "---- Welcome to the Hi-Low Game! ----\n" +
                             "I've picked a number between 1 and 100. Try to guess it!");
     }
-
-//    public void setGuessLimit(byte limit) {
-//        guessLimit = limit;
-//    }
 
     public void userGuess(byte guess) {
         // increment the guesses it's taken so far
