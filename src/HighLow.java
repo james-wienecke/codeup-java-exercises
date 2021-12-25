@@ -31,7 +31,6 @@ public class HighLow {
         hiLowGame game = new hiLowGame();
 
         // allow user to set their difficulty
-        //byte guessLimit = setDifficulty();
         setDifficulty(game);
         if (game.guessLimit > 0) {
             System.out.printf("Guess limit: %d\n", game.guessLimit);
@@ -42,17 +41,16 @@ public class HighLow {
             System.out.println("You guess:");
             game.userGuess(getByte((byte) 1, (byte) 100));
             // difficulty and loss handling only applied if guessLimit is set higher than 0
-            if (game.guessLimit > 0 && game.isOngoing()) {
-                if (game.getGuessCount() == game.guessLimit - 1)
-                    System.out.println("Last guess! Make it count!");
-                if (game.getGuessCount() >= game.guessLimit) {
-                    System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
-                    System.out.printf("The number was %d, by the way...\n", game.getNumber());
-                    break;
-                }
+//            if (game.guessLimit > 0 && game.isOngoing()) {
+//                if (game.getGuessCount() == game.guessLimit - 1)
+//                    System.out.println("Last guess! Make it count!");
+//                if (game.getGuessCount() >= game.guessLimit) {
+//                    System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
+//                    System.out.printf("The number was %d, by the way...\n", game.getNumber());
+//                    break;
+//                }
             }
         }
-    }
 
     private static byte getByte(byte min, byte max) {
         byte userByte = sc.nextByte();
@@ -69,6 +67,7 @@ public class HighLow {
         game.guessLimit = getByte((byte) 0, (byte) 100);
     }
 }
+
 class hiLowGame {
     private final byte number;
     private byte guessCount = 0;
@@ -86,10 +85,9 @@ class hiLowGame {
         guessCount++;
         if (guess == number)
             win();
-        else if (guess < number)
-            guessFeedback(true);
-        else
-            guessFeedback(false);
+        else if ((guessCount >= guessLimit) && (guessLimit > 0)) {
+            lose();
+        } else guessFeedback(guess < number);
     }
 
     private void guessFeedback(boolean low) {
@@ -99,12 +97,19 @@ class hiLowGame {
             System.out.println("LOWER");
         }
         System.out.printf("Current guesses: %d\n", guessCount);
-
+        if (guessCount == guessLimit - 1)
+            System.out.println("Next up is your last guess! Make it count!");
     }
 
     private void win() {
         System.out.println("GOOD GUESS!");
         System.out.printf("You guessed %d in %d guesses!", number, guessCount);
+        ongoing = false;
+    }
+
+    private void lose() {
+        System.out.println("Sorry, you've exceeded the allowed guesses for this difficulty. Try again!");
+        System.out.printf("The number was %d, by the way...\n", number);
         ongoing = false;
     }
 
