@@ -28,7 +28,6 @@ public class HighLow {
 
     public static void main(String[] args) {
         playGame();
-
     }
 
     private static byte getByte(byte min, byte max) {
@@ -60,6 +59,11 @@ public class HighLow {
             System.out.println("--------------------------------------");
             System.out.println("You guess:");
             game.userGuess(getByte((byte) 1, (byte) 100));
+        }
+
+        System.out.println("Would you like to play again? (y/n)");
+        if (sc.next().equalsIgnoreCase("y")) {
+            playGame();
         }
     }
 }
