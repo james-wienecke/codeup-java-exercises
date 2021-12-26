@@ -103,7 +103,7 @@ class hiLowGame {
 
     private void win() {
         System.out.println("GOOD GUESS!");
-        System.out.printf("You guessed %d in %d guesses!", number, guessCount);
+        System.out.printf("You guessed %d in %d guesses!\n", number, guessCount);
         ongoing = false;
     }
 
