@@ -27,21 +27,8 @@ public class HighLow {
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // setup a new hi-low game
-        hiLowGame game = new hiLowGame();
-
-        // allow user to set their difficulty
-        setDifficulty(game);
-        if (game.guessLimit > 0) {
-            System.out.printf("Guess limit: %d\n", game.guessLimit);
-        }
-        // main game loop
-        while (game.isOngoing()) {
-            System.out.println("--------------------------------------");
-            System.out.println("You guess:");
-            game.userGuess(getByte((byte) 1, (byte) 100));
-            }
-        }
+        playGame();
+    }
 
     private static byte getByte(byte min, byte max) {
         byte userByte = sc.nextByte();
@@ -56,6 +43,28 @@ public class HighLow {
         System.out.println("Enter a number to limit the guesses you can make for this round. Max is 99");
         System.out.println("For unlimited chances, enter '0'.");
         game.guessLimit = getByte((byte) 0, (byte) 100);
+    }
+
+    private static void playGame() {
+        // setup a new hi-low game
+        hiLowGame game = new hiLowGame();
+
+        // allow user to set their difficulty
+        setDifficulty(game);
+        if (game.guessLimit > 0) {
+            System.out.printf("Guess limit: %d\n", game.guessLimit);
+        }
+        // main game loop
+        while (game.isOngoing()) {
+            System.out.println("--------------------------------------");
+            System.out.println("You guess:");
+            game.userGuess(getByte((byte) 1, (byte) 100));
+        }
+
+        System.out.println("Would you like to play again? (y/n)");
+        if (sc.next().equalsIgnoreCase("y")) {
+            playGame();
+        }
     }
 }
 
@@ -94,7 +103,7 @@ class hiLowGame {
 
     private void win() {
         System.out.println("GOOD GUESS!");
-        System.out.printf("You guessed %d in %d guesses!", number, guessCount);
+        System.out.printf("You guessed %d in %d guesses!\n", number, guessCount);
         ongoing = false;
     }
 
