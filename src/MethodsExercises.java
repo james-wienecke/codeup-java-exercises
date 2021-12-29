@@ -297,14 +297,6 @@ class DieCollection {
         return rollResults;
     }
 
-    public int getFaceValue() {
-        return faceValue;
-    }
-
-    public int getCollectionCount() {
-        return collectionCount;
-    }
-
     public String toString() {
         return String.format("%dx %d-sided die", collectionCount, faceValue);
     }
