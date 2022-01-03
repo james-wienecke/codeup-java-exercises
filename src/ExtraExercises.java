@@ -1,4 +1,5 @@
 import java.sql.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ExtraExercises {
@@ -63,6 +64,7 @@ public class ExtraExercises {
         123
         1234
          */
+        /*
         System.out.println("Enter a number to determine the size of the right angle triangle.");
         int triangleNum = getInteger(0, Integer.MAX_VALUE);
         for (int i = 1; i <= triangleNum; i++) {
@@ -71,6 +73,30 @@ public class ExtraExercises {
             }
             System.out.println();
         }
+         */
+
+        /* Write a program in Java to make such a pattern like right angle triangle with number increased by 1.
+
+        With an input of 10.
+        The pattern must look like :
+
+           1
+           2 3
+           4 5 6
+           7 8 9 10
+         */
+        System.out.println("Enter a number for a counting right triangle pattern.");
+        int triangleNumMax = getInteger(0, Integer.MAX_VALUE);
+        int rowLength = 1;
+        int i = 1;
+        while (i <= triangleNumMax) {
+            for (int j = 0; j < rowLength; j++) {
+                System.out.printf("%3d ", i++);
+            }
+            System.out.println();
+            rowLength++;
+        }
+
     }
     private static Scanner sc = new Scanner(System.in);
 
