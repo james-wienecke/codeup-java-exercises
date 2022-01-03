@@ -12,7 +12,7 @@ public class ControlFlowExercises {
         }
 
         // newline for the power loop
-        System.out.print('\n');
+        System.out.println();
 
         // do while refactored to for
         for (int i = 2; i <= 1_000_000; i = (int) Math.pow(i, 2)) {
