@@ -17,6 +17,18 @@ public class ExtraExercises {
         }
         System.out.printf("Sum of numbers: %d\n", getIntArraySum(numbers));
         System.out.printf("Average of numbers: %d\n", getAverage(numbers));
+
+        /* Write a program in Java to display the cube of the number upto given an integer. Read the number using the Scanner class.
+
+        Expected Output :
+        Number is : 1 and cube of the 1 is :1
+        Number is : 2 and cube of the 2 is :8
+        Number is : 3 and cube of the 3 is :27
+        Number is : 4 and cube of the 4 is :64
+        Number is : 5 and cube of the 5 is :125
+         */
+
+        System.out.println();
     }
     private static Scanner sc = new Scanner(System.in);
 
