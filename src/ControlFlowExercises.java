@@ -11,8 +11,11 @@ public class ControlFlowExercises {
             System.out.printf("%d ", i++);
         }
 
-        // newline for the power loop
-        System.out.print('\n');
+        System.out.println();
+
+        for (short i = 100; i >= -10; i -= 5) {
+            System.out.println(i);
+        }
 
         // do while refactored to for
         for (int i = 2; i <= 1_000_000; i = (int) Math.pow(i, 2)) {
@@ -62,11 +65,10 @@ public class ControlFlowExercises {
             5      | 25      | 125
          */
 
-        boolean tableContinue = true;
         do {
-            System.out.println("Please gimme ONE integer please i need to build taable of poweeers");
+            System.out.println("Please gimme ONE integer! I need to build a table of powers");
             long userNum = sc.nextInt();
-            System.out.printf("Ok here table for %d\n", userNum);
+            System.out.printf("Ok here is a table for %d\n", userNum);
             System.out.println(" number |    squared |        cubed\n------- | ---------- | ------------");
             for (long i = 1; i <= userNum; i++) {
                 System.out.format("%7d | %10d | %12d\n", i, (long) Math.pow(i, 2), (long) Math.pow(i, 3));
@@ -74,10 +76,10 @@ public class ControlFlowExercises {
             sc.nextLine();
             System.out.println("Do you want to see another table? (y/n)");
             if (sc.nextLine().equals("n")) {
-                tableContinue = false;
+                break;
             }
-        } while (tableContinue);
-        System.out.println("thankyou byeeeee");
+        } while (true);
+        System.out.println("Thank you! Bye!");
         /* Letter Grades */
         //Convert given number grades into letter grades.
         //
@@ -96,7 +98,6 @@ public class ControlFlowExercises {
         //Bonus
         //Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
 
-        boolean gradeContinue = true;
         do {
             System.out.println("Please enter a numerical grade:");
             short userGrade = sc.nextShort();
@@ -117,8 +118,9 @@ public class ControlFlowExercises {
             System.out.printf("%d is a %s grade.", userGrade, letterGrade);
             sc.nextLine();
             System.out.println("\nDo you wish to continue? (y/n)");
-            if (sc.nextLine().equals("n")) gradeContinue = false;
-        } while (gradeContinue);
+            if (sc.nextLine().equals("n"))
+                break;
+        } while (true);
         System.out.println("Thank you! Have a great day!");
     }
 }

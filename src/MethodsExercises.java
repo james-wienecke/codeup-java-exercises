@@ -37,7 +37,7 @@ public class MethodsExercises {
 
 
 //        factorialUserInputLoop();
-        diceSimMain();
+        runDiceSim();
     }
 
     private static double addition(double a, double b) {
@@ -224,13 +224,13 @@ public class MethodsExercises {
     Use the .random method of the java.lang.Math class to generate random numbers.
      */
 
-    private static void diceSimMain() {
+    private static void runDiceSim() {
         do {
 
             // take user input on dice type, build up a set of dice options
             ArrayList<DieCollection> dieSet = new ArrayList<DieCollection>(buildDieSet());
             // simulate dice roll
-             diceSimRoll(dieSet);
+             rollForDiceSim(dieSet);
             // allow exit
             System.out.println("Do you want to start over with new dice? (y/n)");
             if (sc.next().equalsIgnoreCase("n")) {
@@ -266,7 +266,7 @@ public class MethodsExercises {
         return buildDieSet(new ArrayList<DieCollection>());
     }
 
-    private static void diceSimRoll(ArrayList<DieCollection> dieSet) {
+    private static void rollForDiceSim(ArrayList<DieCollection> dieSet) {
         for (DieCollection dieCol : dieSet) {
             System.out.println(dieCol.toString());
             System.out.println(Arrays.toString(dieCol.roll()));
