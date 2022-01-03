@@ -1,9 +1,8 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class StringExercise {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /*
         *String Basics.
 
@@ -15,10 +14,8 @@ public class StringExercise {
         We don't need no education
         We don't need no thought control
         */
-        String strEdu  = "We don't need no education";
-        System.out.println(strEdu);
-        String strThought = "We don't need no thought control";
-        System.out.println(strThought);
+        String strWall  = "We don't need no education\n" + "We don't need no thought control";
+        System.out.println(strWall);
         /*
         Check "this" out!, "s inside of "s!
         */
@@ -52,7 +49,7 @@ class Bob {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         System.out.println("Bob: Hello, I'm Bob.");
         boolean continueChat = true;
         do {

@@ -1,9 +1,7 @@
-import java.sql.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ExtraExercises {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Write a program in Java to read 10 numbers from keyboard and find their sum and average
 
         Expected Output :
@@ -95,7 +93,7 @@ public class ExtraExercises {
     private static Scanner sc = new Scanner(System.in);
 
     private static int getInteger(int min, int max) {
-        System.out.printf("Enter a number:\n");
+        System.out.print("Enter a number:\n");
         int userInt = sc.nextInt();
         if (userInt < min || userInt > max)
             return getInteger(min, max);
@@ -105,8 +103,8 @@ public class ExtraExercises {
 
     private static long getIntArraySum(int[] numbers) {
         long sum = 0;
-        for (int i = 0; i < numbers.length; i++) {
-            sum += numbers[i];
+        for (int number : numbers) {
+            sum += number;
         }
         return sum;
     }
