@@ -77,7 +77,7 @@ public class ControlFlowExercises {
                 tableContinue = false;
             }
         } while (tableContinue);
-        System.out.println("Thank you! bye!");
+        System.out.println("Thank you! Bye!");
         /* Letter Grades */
         //Convert given number grades into letter grades.
         //
