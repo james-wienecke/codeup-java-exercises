@@ -13,12 +13,9 @@ public class ControlFlowExercises {
 
         System.out.println();
 
-        short num = 0;
-        do {
-            System.out.println(num);
-            num += 2;
-        } while (num <= 100);
-
+        for (short i = 100; i >= -10; i -= 5) {
+            System.out.println(i);
+        }
 
         // do while refactored to for
         for (int i = 2; i <= 1_000_000; i = (int) Math.pow(i, 2)) {
