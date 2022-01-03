@@ -11,8 +11,14 @@ public class ControlFlowExercises {
             System.out.printf("%d ", i++);
         }
 
-        // newline for the power loop
         System.out.println();
+
+        short num = 0;
+        do {
+            System.out.println(num);
+            num += 2;
+        } while (num <= 100);
+
 
         // do while refactored to for
         for (int i = 2; i <= 1_000_000; i = (int) Math.pow(i, 2)) {
