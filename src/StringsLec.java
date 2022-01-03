@@ -32,5 +32,16 @@ public class StringsLec {
 
         String scream = "AAAAAHHHHH!!!!!";
         System.out.println(scream.toLowerCase(Locale.ROOT));
+
+        // string manipulation
+
+        String barney = "Barney The Dinosaur";
+        System.out.printf("Location of \"The\" in string at index %d.\n", barney.indexOf("The"));
+
+        String dinosaur = barney.substring(11);
+        System.out.println(dinosaur);
+
+        String the = barney.substring(7, 10);
+        System.out.println(the);
     }
 }
