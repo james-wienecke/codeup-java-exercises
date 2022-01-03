@@ -50,5 +50,17 @@ public class StringsLec {
         System.out.println(barney);
 
         // trimming strings
+
+        String fluffyString = "               I LOVE MARSH      MELLOWS          ";
+        // the String.trim() method can remove leading and trailing whitespace, including spaces and tabs.
+        // has no effect on whitespace internal to the alphanumerosymbolic characters between the trimmed edges
+        // again, this is NOT destructive
+        System.out.println(fluffyString.trim());
+
+        // lastIndexOf
+        String band = "Godspeed You! Black Emperor";
+        String efrim = "Thee Silver Mt. Zion Memorial Orchestra and Tra-la-la Band";
+        System.out.println(band.lastIndexOf("e"));
+        System.out.println(efrim.lastIndexOf("la"));
     }
 }
