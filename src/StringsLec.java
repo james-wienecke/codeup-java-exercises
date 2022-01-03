@@ -43,5 +43,12 @@ public class StringsLec {
 
         String the = barney.substring(7, 10);
         System.out.println(the);
+
+        // we are also able to replace a sequence of characters with a different sequence of characters
+        System.out.println(barney.replace(dinosaur, "President"));
+        // this, like substring, is not destructive
+        System.out.println(barney);
+
+        // trimming strings
     }
 }
