@@ -65,7 +65,6 @@ public class ControlFlowExercises {
             5      | 25      | 125
          */
 
-        boolean tableContinue = true;
         do {
             System.out.println("Please gimme ONE integer! I need to build a table of powers");
             long userNum = sc.nextInt();
@@ -77,9 +76,9 @@ public class ControlFlowExercises {
             sc.nextLine();
             System.out.println("Do you want to see another table? (y/n)");
             if (sc.nextLine().equals("n")) {
-                tableContinue = false;
+                break;
             }
-        } while (tableContinue);
+        } while (true);
         System.out.println("Thank you! Bye!");
         /* Letter Grades */
         //Convert given number grades into letter grades.
@@ -99,7 +98,6 @@ public class ControlFlowExercises {
         //Bonus
         //Edit your grade ranges to include pluses and minuses (ex: 99-100 = A+).
 
-        boolean gradeContinue = true;
         do {
             System.out.println("Please enter a numerical grade:");
             short userGrade = sc.nextShort();
@@ -120,8 +118,9 @@ public class ControlFlowExercises {
             System.out.printf("%d is a %s grade.", userGrade, letterGrade);
             sc.nextLine();
             System.out.println("\nDo you wish to continue? (y/n)");
-            if (sc.nextLine().equals("n")) gradeContinue = false;
-        } while (gradeContinue);
+            if (sc.nextLine().equals("n"))
+                break;
+        } while (true);
         System.out.println("Thank you! Have a great day!");
     }
 }
