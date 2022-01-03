@@ -44,6 +44,7 @@ public class ExtraExercises {
         The odd numbers are :1 3 5 7 9 11 13 15 17 19
         The Sum of odd Natural Number upto 10 terms : 100
          */
+        /*
         System.out.println("Enter the number of terms for display of odd natural numbers from 1 and their sum.");
         int oddTerms = sc.nextInt();
         int oddSum = 0;
@@ -53,7 +54,23 @@ public class ExtraExercises {
             oddSum += i;
         }
         System.out.printf("\nSum of odd natural numbers up to %d terms: %d\n", oddTerms, oddSum);
+        */
+        /* Write a program in Java to display the pattern like right angle triangle with a number. Read the number using the Scanner class.
 
+        The pattern like :
+        1
+        12
+        123
+        1234
+         */
+        System.out.println("Enter a number to determine the size of the right angle triangle.");
+        int triangleNum = getInteger(0, Integer.MAX_VALUE);
+        for (int i = 1; i <= triangleNum; i++) {
+            for (int j = 1; j <= i; j++) {
+                System.out.print(j);
+            }
+            System.out.println();
+        }
     }
     private static Scanner sc = new Scanner(System.in);
 
