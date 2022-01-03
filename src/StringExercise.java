@@ -15,26 +15,26 @@ public class StringExercise {
         We don't need no education
         We don't need no thought control
         */
-        String str  = "We don't need no education";
-        System.out.println(str);
-        str = "We don't need no thought control";
-        System.out.println(str);
+        String strEdu  = "We don't need no education";
+        System.out.println(strEdu);
+        String strThought = "We don't need no thought control";
+        System.out.println(strThought);
         /*
         Check "this" out!, "s inside of "s!
         */
-        str = "Check \"this\" out!, \"s inside of \"s!";
-        System.out.println(str);
+        String strQuotesInQuotes = "Check \"this\" out!, \"s inside of \"s!";
+        System.out.println(strQuotesInQuotes);
         /*
         In windows, the main drive is usually C:\
         */
-        str = "In windows, the main drive is usually C:\\";
-        System.out.println(str);
+        String strMainDrive = "In windows, the main drive is usually C:\\";
+        System.out.println(strMainDrive);
         /*
         I can do backslashes \, double backslashes \\,
         and the amazing triple backslash \\\!
         */
-        str = "I can do backslashes \\, double backslashes \\\\, and the amazing triple backslash \\\\\\!";
-        System.out.println(str);
+        String strEscapes = "I can do backslashes \\, double backslashes \\\\, and the amazing triple backslash \\\\\\!";
+        System.out.println(strEscapes);
     }
 }
 
