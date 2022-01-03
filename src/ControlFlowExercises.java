@@ -64,9 +64,9 @@ public class ControlFlowExercises {
 
         boolean tableContinue = true;
         do {
-            System.out.println("Please gimme ONE integer please i need to build taable of poweeers");
+            System.out.println("Please gimme ONE integer! I need to build a table of powers");
             long userNum = sc.nextInt();
-            System.out.printf("Ok here table for %d\n", userNum);
+            System.out.printf("Ok here is a table for %d\n", userNum);
             System.out.println(" number |    squared |        cubed\n------- | ---------- | ------------");
             for (long i = 1; i <= userNum; i++) {
                 System.out.format("%7d | %10d | %12d\n", i, (long) Math.pow(i, 2), (long) Math.pow(i, 3));
