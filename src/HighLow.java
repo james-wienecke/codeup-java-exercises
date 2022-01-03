@@ -60,7 +60,7 @@ public class HighLow {
         while (game.isOngoing()) {
             System.out.println("--------------------------------------");
             System.out.println("You guess:");
-            game.userGuess(getByte((byte) 1, (byte) 100));
+            game.getUserGuess(getByte((byte) 1, (byte) 100));
         }
 
         System.out.println("Would you like to play again? (y/n)");
@@ -82,17 +82,17 @@ class hiLowGame {
                             "I've picked a number between 1 and 100. Try to guess it!");
     }
 
-    public void userGuess(byte guess) {
+    public void getUserGuess(byte guess) {
         // increment the guesses it's taken so far
         guessCount++;
         if (guess == number)
             win();
         else if ((guessCount >= guessLimit) && (guessLimit > 0)) {
             lose();
-        } else guessFeedback(guess < number);
+        } else giveGuessFeedback(guess < number);
     }
 
-    private void guessFeedback(boolean low) {
+    private void giveGuessFeedback(boolean low) {
         if (low) {
             System.out.println("HIGHER");
         } else {
