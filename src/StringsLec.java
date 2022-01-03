@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public class StringsLec {
@@ -23,11 +24,13 @@ public class StringsLec {
         String dad = "Dad";
 
         char firstLetterOfDavid = david.charAt(0);
-        System.out.printf("Does \"David\" and \"Dad\" start with the same letter?\n", dad.startsWith("" + firstLetterOfDavid));
+        System.out.printf("Does \"David\" and \"Dad\" start with the same letter? %b\n", dad.startsWith("" + firstLetterOfDavid));
+        char lastLetterOfDavid = david.charAt(david.length() - 1);
+        System.out.printf("Does \"David\" and \"Dad\" end with the same letter? %b\n", dad.endsWith("" + lastLetterOfDavid));
 
         // changing casing in strings
 
         String scream = "AAAAAHHHHH!!!!!";
-        System.out.println(scream.toLowerCase());
+        System.out.println(scream.toLowerCase(Locale.ROOT));
     }
 }
