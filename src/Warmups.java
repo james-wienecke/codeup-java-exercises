@@ -19,5 +19,10 @@ public class Warmups {
             System.out.println("Well, I hope you enjoyed it...");
         }
 
+        System.out.println(startDay());
+    }
+
+    private static String startDay () {
+        return "Brain loading... Done!";
     }
 }
