@@ -26,17 +26,17 @@ public class MethodsExercises {
 
     private static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
-//        System.out.println(addition(1, 2));
-//        System.out.println(subtraction(4, 2));
-//        System.out.println(multiplication(7, 4));
-//        System.out.println(division(1, 2));
-//        System.out.println(modulus(25, 6));
+        System.out.println(addition(1, 2));
+        System.out.println(subtraction(4, 2));
+        System.out.println(multiplication(7, 4));
+        System.out.println(division(1, 2));
+        System.out.println(modulus(25, 6));
 
-//        System.out.println(getInteger(1, 10));
-//        System.out.println(getInteger(-5, 9));
+        System.out.println(getInteger(1, 10));
+        System.out.println(getInteger(-5, 9));
 
 
-//        factorialUserInputLoop();
+        factorialUserInputLoop();
         runDiceSim();
     }
 
