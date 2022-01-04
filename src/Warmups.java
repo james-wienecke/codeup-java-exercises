@@ -20,4 +20,8 @@ public class Warmups {
         }
 
     }
+
+    private static String startDay () {
+        return "Brain loading... Done!";
+    }
 }
