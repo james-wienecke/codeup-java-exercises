@@ -3,19 +3,27 @@ package util;
 import java.util.Scanner;
 
 public class Input {
-    private Scanner sc;
+    private final Scanner sc;
 
     public Input() {
          sc = new Scanner(System.in);
     }
 
     public String getString() {
-        return sc.nextLine();
+        String input = sc.nextLine();
+        if (input.isEmpty())
+            return getString();
+        else
+            return input;
     }
 
     public String getString(String prompt) {
         System.out.println(prompt);
-        return sc.nextLine();
+        String input = sc.nextLine();
+        if (input.isEmpty())
+            return getString(prompt);
+        else
+            return input;
     }
 
     public boolean yesNo() {
