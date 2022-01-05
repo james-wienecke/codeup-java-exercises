@@ -28,6 +28,7 @@ public class MethodsExercises {
     public static void main(String[] args) {
         System.out.println(addition(1, 2));
         System.out.println(subtraction(4, 2));
+        System.out.println(subtraction(3, 9));
         System.out.println(multiplication(7, 4));
         System.out.println(division(1, 2));
         System.out.println(modulus(25, 6));
@@ -40,11 +41,12 @@ public class MethodsExercises {
         runDiceSim();
     }
 
-    private static double addition(double a, double b) {
+    private static int addition(int a, int b) {
         return a + b;
     }
 
-    private static double subtraction(double a, double b) {
+    private static int subtraction(int a, int b) {
+        if (a < b) return subtraction(b, a);
         return a - b;
     }
 
@@ -53,13 +55,13 @@ public class MethodsExercises {
     Create your multiplication method without the * operator (Hint: a loop might be helpful).
     Do the above with recursion.
      */
-    private static double multiplication(double a, double b) {
+    private static int multiplication(int a, int b) {
         // original solution
 //        return a * b;
 
         // no * operator
-//        double sum = 0;
-//        for (double i = b; i > 0; i--) {
+//        int sum = 0;
+//        for (int i = b; i > 0; i--) {
 //            sum += a;
 //        }
 //        return sum;
@@ -83,11 +85,11 @@ public class MethodsExercises {
             return 0;
     }
 
-    private static double division(double a, double b) {
+    private static int division(int a, int b) {
         return a / b;
     }
 
-    private static double modulus(double a, double b) {
+    private static int modulus(int a, int b) {
         return a % b;
     }
 
