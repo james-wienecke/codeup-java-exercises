@@ -24,4 +24,8 @@ public class Movie {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public String toString() {
+        return String.format("%s - (%s)", this.name, this.category);
+    }
 }
