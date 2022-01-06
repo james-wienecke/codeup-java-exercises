@@ -1,3 +1,5 @@
+package warmups;
+
 public class Penguin {
     private String name;
     private String species;
