@@ -8,7 +8,7 @@ public class ArraysExercises {
         Person[] people = {new Person("Mo"), new Person("Curly"), new Person("Larry")};
 
 
-        for (Person person : people) {
+        for (Person person : addPerson(people, new Person("Garfield"))) {
             System.out.println(person.getName());
         }
 
