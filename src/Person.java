@@ -1,6 +1,10 @@
 public class Person {
     private String name;
 
+    public Person() {
+        new Person("default");
+    }
+
     public Person(String name) {
         this.name = name;
     }
@@ -14,10 +18,11 @@ public class Person {
     //TODO: change the name field to the passed value
         this.name = name;
     }
-    public void sayHello(){
+    public String sayHello(){
     //TODO: print a message to the console using the person's name
         String message = String.format("%s says hello!", name);
-        System.out.println(message);
+//        System.out.println(message);
+        return message;
     }
 
     public static void main(String[] args) {
