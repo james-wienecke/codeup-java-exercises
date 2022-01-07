@@ -1,4 +1,5 @@
 package movies;
+
 import util.Input;
 
 import java.util.Arrays;
@@ -11,16 +12,28 @@ public class MoviesApplication {
     Your application should continue to run until the user chooses to exit. */
     private static final Input in = new Input();
     private static Movie[] allMovies = MoviesArray.findAll();
+    private static final String prompt = "What would you like to do?\n\n" +
+            "0 - exit\n" +
+            "1 - view all movies\n" +
+            "2 - view animated movies\n" +
+            "3 - view drama movies\n" +
+            "4 - view horror movies\n" +
+            "5 - view scifi movies\n" +
+            "6 - view musical movies\n" +
+            "7 - view comedy movies\n" +
+            "-1 - add custom movie\n\n" +
+            "Enter your choice: ";
+
 
     public static void main(String[] args) {
         boolean cont = true;
         do {
-            switch(in.getInt(-1, 7, "What would you like to do?\n\n0 - exit\n1 - view all movies\n2 - view animated movies\n3 - view drama movies\n4 - view horror movies\n5 - view scifi movies\n6 - view musical movies\n7 - view comedy movies\n-1 - add custom movie\n\nEnter your choice: ")) {
+            switch (in.getInt(-1, 7, prompt)) {
                 case 0:
                     cont = false;
                     break;
                 case 1:
-                    displayMovies(allMovies);
+                    displayAllMovies();
                     break;
                 case 2:
                     categorySearch("animated");
@@ -50,16 +63,16 @@ public class MoviesApplication {
     }
 
     private static void displayMovies(Movie[] movies) {
+        StringBuffer sb = new StringBuffer();
         for (Movie movie : movies) {
-            System.out.println(movie.toString());
+            sb.append(movie.toString()).append('\n');
         }
+        System.out.println(sb);
     }
 
-    private static Movie titleSearch(String titleQuery) {
-        for (Movie movie : allMovies) {
-            if (titleQuery.equalsIgnoreCase(movie.getName())) return movie;
-        }
-        return null;
+    private static void displayAllMovies() {
+        displayMovies(allMovies);
+        in.waitForAnyLine("\nPress Enter/Return to go back to main menu.");
     }
 
     private static void categorySearch(String category) {
@@ -67,6 +80,8 @@ public class MoviesApplication {
             if (category.equalsIgnoreCase(movie.getCategory()))
                 System.out.println(movie.toString());
         }
+        in.waitForAnyLine("\nPress Enter/Return to go back to main menu.");
+
     }
 
     private static void addMovie() {
