@@ -144,4 +144,13 @@ public class Input {
         else
             return  input;
     }
+
+    public void waitForAnyLine() {
+        String input = sc.nextLine();
+    }
+
+    public void waitForAnyLine(String prompt) {
+        System.out.println(prompt);
+        String input = sc.nextLine();
+    }
 }
