@@ -21,7 +21,7 @@ public class BirdShelterTest {
         rubberDuck.setName("Codey");
         System.out.println(rubberDuck.getName());
 
-        System.out.println(Circle.PI);
+//        System.out.println(Circle.PI);
 
     }
 }
