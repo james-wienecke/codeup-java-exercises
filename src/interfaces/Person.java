@@ -1,7 +1,15 @@
 package interfaces;
 
-public interface Person {
-    boolean eatsFood = true;
+public abstract class Person {
+    private String name;
 
-    void activity();
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public abstract void greeting();
 }
