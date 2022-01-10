@@ -10,10 +10,23 @@ public class ShapesTest {
         System.out.println(box2.getPerimeter());
         System.out.println(box2.getArea());
 
-        Measurable box3 = box2;
+        Measurable box3 = new Square(9);
+        // System.out.println(box3.getLength()); <== cannot do :(
+
+        System.out.println(((Square) box3).getLength()); // <== can do :O
+        // can also do this
         Square square1 = (Square) box3;
         square1.setLength(32);
         System.out.println(box3.getPerimeter());
         System.out.println(box3.getArea());
+        // code smells bad though...
+
+        // do NOT do this:
+//        ((Square) box1).setLength(2);
+//        System.out.println(((Square) box1).getLength());
+
+        // ????
+//        ((Shape) box1).setLength(2);
+//        System.out.println(((Shape) box1).getLength());
     }
 }
