@@ -56,12 +56,22 @@ public class App {
         List list = new List();
         do {
             if (in.yesNo("Would you like to add a new item?")) {
-
-                String userIn = in.getString("Enter the category you wish you browse.");
-
+                System.out.println(sr.getCategories());
+                String userCat = in.getString("Enter the category you wish you browse.");
+                sr.listByCategory(userCat);
+                String userSelect = in.getString("Enter the name of the item you wish to add to your list");
+                int userQuantity = in.getInt(1, 100, "Enter the number of this item you wish to add");
+                try {
+                    list.addItemToList(sr.getItem(userSelect), userQuantity);
+                    System.out.println("Item added!");
+                }
+                catch (NullPointerException e) {
+                    System.out.println("Incorrect item or quantity.");
+                }
             } else {
                 // finalize list
                 list.sortList();
+                System.out.println("Your shopping list:");
                 list.printList();
                 cont = false;
             }

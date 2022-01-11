@@ -21,7 +21,7 @@ public class List {
     }
 
     public void printList() {
-        list.forEach((cat, items) -> items.forEach(System.out::println));
+        list.forEach((cat, items) -> items.forEach(Item::print));
     }
 
     public void sortList() {

@@ -49,4 +49,8 @@ public class Item {
                 ", quantity=" + quantity +
                 '}';
     }
+
+    public static void print(Item item) {
+        System.out.println("item: "+ item.getName() + '\n' + "quantity: " + item.getQuantity() + '\n' + "----------");
+    }
 }
