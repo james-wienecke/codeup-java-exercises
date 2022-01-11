@@ -10,8 +10,8 @@ public class GradesApplication {
     public static void main(String[] args) {
         HashMap<String, Student> students = new HashMap<>();
 
-        String[] names = {"Jimmy", "Chantelle", "Isaac", "Kath", "Natalie"};
-        String[] ghnames = {"jimcantswim", "minecraftgod", "iou a new sandwich", "grepgrepper", "DROP TABLES Students"};
+        String[] names = {"Jessica Hotdogfingers", "Chantelle Manticore", "Isaac Bindingof", "Kathy Ythac", "Natalie Normal", "Heck Fieri", "Chuck Person"};
+        String[] ghnames = {"jimcantswim", "minecraftgod", "iou a new sandwich", "grepgrepper", "DROP TABLES Students", "heck-fire", "eccojams"};
 
         for (int i = 0; i < names.length; i++) {
             students.put(ghnames[i], makeUpStudent(names[i]));
