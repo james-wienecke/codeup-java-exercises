@@ -19,7 +19,7 @@ public class Stockroom {
     }
 
     public Item getItem(String name) {
-//        stock.forEach((cat, items) -> items.forEach(System.out::println));
+
         ArrayList<Item> found = new ArrayList<>();
         stock.forEach(((category, items) -> {
             items.forEach(item -> {
