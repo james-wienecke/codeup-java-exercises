@@ -10,24 +10,61 @@ public class GradesApplication {
         HashMap<String, Student> students = new HashMap<>();
 
         String[] names = {"Jimmy", "Chantelle", "Isaac", "Kath", "Natalie"};
-        String[] ghnames = {"jm-920", "gilmoregirl", "iounewsandwich", "grepgrepper", "DROP TABLES Students"};
+        String[] ghnames = {"jimcantswim", "minecraftgod", "iou a new sandwich", "grepgrepper", "DROP TABLES Students"};
 
         for (int i = 0; i < names.length; i++) {
             students.put(ghnames[i], makeUpStudent(names[i]));
         }
 
-        students.forEach((name, student) -> {
-            System.out.println(name);
-        });
-        Input in = new Input();
+        appLoop(students);
     }
 
     public static Student makeUpStudent(String name) {
         Student student = new Student(name);
         Random random = new Random();
         for (int i = 0; i < 10; i++) {
-            student.addGrade(random.nextInt(100 - 60) + 60);
+            if (random.nextBoolean()) {
+                student.addGrade(random.nextInt(100 - 50) + 50);
+            } else {
+
+                student.addGrade(random.nextInt(100 - 85) + 85);
+            }
         }
         return student;
+    }
+
+    public static void printStudentInfo(Student student) {
+        System.out.println("Student name: " + student.getName());
+        System.out.println("Grade average: " + student.getGradeAverage());
+    }
+
+    public static void appLoop(HashMap<String, Student> students) {
+        Input in = new Input();
+        boolean cont = true;
+        do {
+            // menu options
+            System.out.println("Student GitHub Usernames:");
+            students.forEach((ghName, student) -> {
+                System.out.println(ghName);
+            });
+
+            // take input
+            String prompt = "Enter the username of the student you wish to see more information about. Enter 'exit', 'quit', or 'q' to stop.";
+            String resp = in.getString(prompt);
+
+            // react to input
+            if (students.containsKey(resp)) {
+                // name lookup success
+                System.out.println("Showing data for " + resp);
+                printStudentInfo(students.get(resp));
+                in.waitForAnyLine("Press enter/return to go back to main menu!");
+            } else if (resp.equals("quit") || resp.equals("exit") || resp.equals("q")) {
+                // exit program
+                cont = false;
+            } else if (!students.containsKey(resp)) {
+                // name lookup failure
+                System.out.println("Cannot find student: " + resp);
+            }
+        } while (cont);
     }
 }
