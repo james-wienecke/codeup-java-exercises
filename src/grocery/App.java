@@ -2,11 +2,10 @@ package grocery;
 
 import util.Input;
 
-import java.util.Collections;
-
 public class App {
     private static Stockroom sr = new Stockroom();
     private static Input in = new Input();
+
     public static void main(String[] args) {
         sr = new Stockroom();
         populateStockroom();
@@ -14,7 +13,6 @@ public class App {
         if (in.yesNo("Would you like to start a new grocery list?")) {
             buildGroceryList();
         }
-
     }
 
     public static void populateStockroom() {
@@ -78,11 +76,3 @@ public class App {
         } while (cont);
     }
 }
-
-//                list.addItemToList(sr.getItem("ground beef"), 5);
-//                list.addItemToList(sr.getItem("bacon"), 12);
-//                list.addItemToList(sr.getItem("broccoli"), 2);
-//                list.addItemToList(sr.getItem("onion"), 2);
-//                list.addItemToList(sr.getItem("milk"), 3);
-//                list.addItemToList(sr.getItem("garlic"), 4);
-//                list.addItemToList(sr.getItem("carrot"), 200);

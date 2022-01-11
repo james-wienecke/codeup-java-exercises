@@ -21,7 +21,10 @@ public class List {
     }
 
     public void printList() {
-        list.forEach((cat, items) -> items.forEach(Item::print));
+        list.forEach((cat, items) -> {
+            if (!list.get(cat).isEmpty()) System.out.println("_______________\n" + cat.toString());
+            items.forEach(Item::print);
+        });
     }
 
     public void sortList() {
