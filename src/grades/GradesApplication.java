@@ -49,18 +49,15 @@ public class GradesApplication {
             });
 
             // take input
-            String prompt = "Enter the username of the student you wish to see more information about. Enter 'exit', 'quit', or 'q' to stop.";
-            String resp = in.getString(prompt);
+            String resp = in.getString("Enter the username of the student you wish to see more information about.");
 
             // react to input
             if (students.containsKey(resp)) {
                 // name lookup success
                 System.out.println("Showing data for " + resp);
                 printStudentInfo(students.get(resp));
-                in.waitForAnyLine("Press enter/return to go back to main menu!");
-            } else if (resp.equals("quit") || resp.equals("exit") || resp.equals("q")) {
-                // exit program
-                cont = false;
+                // pause screen on the output and allow user to choose to go back to the menu or exit application
+                cont = in.yesNo("Do you want to return to the main menu?");
             } else if (!students.containsKey(resp)) {
                 // name lookup failure
                 System.out.println("Cannot find student: " + resp);
