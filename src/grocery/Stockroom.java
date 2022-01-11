@@ -14,9 +14,8 @@ public class Stockroom {
         }
     }
 
-    public EnumMap<Category, ArrayList<Item>> addToStock(Category cat, Item item) {
-        stock.get(cat).add(item);
-        return stock;
+    public void addToStock(Category cat, String name) {
+        stock.get(cat).add(new Item(name, cat));
     }
 
     public Item getItem(String name) {
