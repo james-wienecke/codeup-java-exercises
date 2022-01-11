@@ -1,8 +1,21 @@
 package grocery;
 
+import util.Input;
+
 public class App {
+    private static Stockroom sr = new Stockroom();
+    private static Input in = new Input();
     public static void main(String[] args) {
-        Stockroom sr = new Stockroom();
+        sr = new Stockroom();
+        populateStockroom();
+
+        if (in.yesNo("Would you like to start a new grocery list?")) {
+            buildGroceryList();
+        }
+
+    }
+
+    public static void populateStockroom() {
         // CANNED
         sr.addToStock(Category.CANNED, "chicken noodle soup");
         sr.addToStock(Category.CANNED, "tomato soup");
@@ -28,10 +41,13 @@ public class App {
         sr.addToStock(Category.MEAT, "ground beef");
         sr.addToStock(Category.MEAT, "breakfast sausage");
         sr.addToStock(Category.MEAT, "bacon");
+    }
 
-        System.out.println(sr.getItem("chicken noodle soup").toString());
-        System.out.println(sr.getItem("beef chuck").toString());
-        // need to catch these gosh darn null pointer exceptions
-//        System.out.println(sr.getItem("hell dogs").toString());
+    private static void buildGroceryList() {
+        do {
+            if (in.yesNo("Would you like to add a new item?")) {
+                System.out.println("Too bad!");
+            }
+        } while (true);
     }
 }
