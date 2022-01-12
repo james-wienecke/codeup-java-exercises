@@ -14,16 +14,4 @@ public class Stockroom extends Inventory {
         this.stock.get(cat).add(new Item(name, cat));
     }
 
-    public Item getItem(String name) {
-
-        ArrayList<Item> found = new ArrayList<>();
-        this.stock.forEach(((category, items) -> {
-            items.forEach(item -> {
-                if (name.equalsIgnoreCase(item.getName())) found.add(item);
-            });
-        }));
-
-        if (found.isEmpty()) return null;
-        else return found.get(0);
-    }
 }

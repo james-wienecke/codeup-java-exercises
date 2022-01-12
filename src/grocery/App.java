@@ -93,11 +93,36 @@ public class App {
     }
 
     private static void removeListItem(ShoppingList shoppingList) {
-        System.out.println();
+        System.out.println(shoppingList.getCategories());
+        String userCat = in.getString("Enter the category you wish you browse.");
+        shoppingList.listByCategory(userCat);
+        String userSelect = in.getString("Enter the name of the item you wish to remove.");
+        try {
+            Item item = shoppingList.getItem(userSelect);
+            shoppingList.removeItem(item);
+        } catch (NullPointerException e) {
+            System.out.println("Incorrect item.");
+        }
     }
 
     private static void editListItemQuantity(ShoppingList shoppingList) {
-
+        System.out.println(shoppingList.getCategories());
+        String userCat = in.getString("Enter the category you wish you browse.");
+        shoppingList.listByCategory(userCat);
+        String userSelect = in.getString("Enter the name of the item you wish to edit.");
+        int userQuantity = in.getInt(0, 100, "Enter the new quantity.");
+        try {
+            if (userQuantity == 0) {
+                Item item = shoppingList.getItem(userSelect);
+                shoppingList.removeItem(item);
+                System.out.println("Item removed");
+            } else {
+                shoppingList.getItem(userSelect).setQuantity(userQuantity);
+                System.out.println("Quantity edited!");
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Incorrect item or quantity.");
+        }
     }
 
     private static void addItemToList(ShoppingList shoppingList) {

@@ -1,8 +1,6 @@
 package grocery;
 
-import java.util.ArrayList;
-import java.util.EnumMap;
-import java.util.Locale;
+import java.util.*;
 
 public abstract class Inventory {
     EnumMap<Category, ArrayList<Item>> stock;
@@ -59,6 +57,24 @@ public abstract class Inventory {
         } else if (selected == null) {
             System.out.println("Unknown category");
         }
+    }
 
+    public Item getItem(String name) {
+
+        ArrayList<Item> found = new ArrayList<>();
+        this.stock.forEach(((category, items) -> {
+            items.forEach(item -> {
+                if (name.equalsIgnoreCase(item.getName())) found.add(item);
+            });
+        }));
+
+        if (found.isEmpty()) return null;
+        else return found.get(0);
+    }
+
+    public void removeItem(Item tgtItem) {
+        for (Category category : this.stock.keySet()) {
+            this.stock.get(category).removeIf(item -> Objects.equals(item.getName(), tgtItem.getName()));
+        }
     }
 }

@@ -30,4 +30,17 @@ public class ShoppingList extends Inventory {
         }
     }
 
+    @Override
+    public String getCategories() {
+        StringBuffer sb = new StringBuffer("Categories:");
+        for (Category cat : Category.values()) {
+            // don't display empty categories
+            if (!this.stock.get(cat).isEmpty()) {
+                sb.append('\n').append(cat.toString());
+            }
+        }
+
+        return sb.toString();
+    }
+
 }
