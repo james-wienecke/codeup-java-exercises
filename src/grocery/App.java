@@ -15,39 +15,39 @@ public class App {
         }
     }
 
-    private static void buildGroceryList(List list) {
+    private static void buildGroceryList(ShoppingList shoppingList) {
         boolean cont = true;
         do {
             if (in.yesNo("Would you like to add a new item?")) {
-                addItemToList(list);
+                addItemToList(shoppingList);
             } else {
-                cont = finalizeList(list);
+                cont = finalizeList(shoppingList);
             }
         } while (cont);
     }
 
     // calling buildGroceryList with no parameters causes a new empty grocery list to be created
     private static void buildGroceryList() {
-        List list = new List();
-        buildGroceryList(list);
+        ShoppingList shoppingList = new ShoppingList();
+        buildGroceryList(shoppingList);
     }
 
-    private static void editListMenu(List list) {
+    private static void editListMenu(ShoppingList shoppingList) {
         String option = (in.getString("Would you like to edit or start over?"));
 
         if (option.equalsIgnoreCase("start over")) {
             buildGroceryList();
         } else if (option.equalsIgnoreCase("edit")) {
-            editList(list);
+            editList(shoppingList);
         } else if (option.equalsIgnoreCase("cancel")) {
             System.out.println("Going back to finalization screen...");
         } else {
             System.out.println("Unrecognized input: " + option);
-            editListMenu(list);
+            editListMenu(shoppingList);
         }
     }
 
-    private static void editList(List list) {
+    private static void editList(ShoppingList shoppingList) {
         boolean cont = true;
         do {
             int option = in.getInt(0, 3,
@@ -60,13 +60,13 @@ public class App {
 
             switch (option) {
                 case 1:
-                    addItemToList(list);
+                    addItemToList(shoppingList);
                     break;
                 case 2:
-                    editListItemQuantity(list);
+                    editListItemQuantity(shoppingList);
                     break;
                 case 3:
-                    removeListItem(list);
+                    removeListItem(shoppingList);
                     break;
                 case 0:
                     cont = false;
@@ -76,38 +76,38 @@ public class App {
 
     }
 
-    private static boolean finalizeList(List list) {
+    private static boolean finalizeList(ShoppingList shoppingList) {
         boolean cont = true;
         // finalize list
         do {
-            list.sortList();
+            shoppingList.sortList();
             System.out.println("Your shopping list:");
-            list.printList();
+            shoppingList.printList();
             if(in.yesNo("Does this all look correct?")) {
                 cont = false;
             } else {
-                editListMenu(list);
+                editListMenu(shoppingList);
             }
         } while (cont);
         return false;
     }
 
-    private static void removeListItem(List list) {
+    private static void removeListItem(ShoppingList shoppingList) {
         System.out.println();
     }
 
-    private static void editListItemQuantity(List list) {
+    private static void editListItemQuantity(ShoppingList shoppingList) {
 
     }
 
-    private static void addItemToList(List list) {
+    private static void addItemToList(ShoppingList shoppingList) {
             System.out.println(sr.getCategories());
             String userCat = in.getString("Enter the category you wish you browse.");
             sr.listByCategory(userCat);
             String userSelect = in.getString("Enter the name of the item you wish to add to your list");
             int userQuantity = in.getInt(1, 100, "Enter the number of this item you wish to add");
             try {
-                list.addItemToList(sr.getItem(userSelect), userQuantity);
+                shoppingList.addItemToList(sr.getItem(userSelect), userQuantity);
                 System.out.println("Item added!");
             } catch (NullPointerException e) {
                 System.out.println("Incorrect item or quantity.");
