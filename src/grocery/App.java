@@ -60,10 +60,13 @@ public class App {
 
             switch (option) {
                 case 1:
+                    addItemToList(list);
                     break;
                 case 2:
+                    editListItemQuantity(list);
                     break;
                 case 3:
+                    removeListItem(list);
                     break;
                 case 0:
                     cont = false;
@@ -86,8 +89,15 @@ public class App {
                 editListMenu(list);
             }
         } while (cont);
+        return false;
+    }
 
-        return cont;
+    private static void removeListItem(List list) {
+        System.out.println();
+    }
+
+    private static void editListItemQuantity(List list) {
+
     }
 
     private static void addItemToList(List list) {
