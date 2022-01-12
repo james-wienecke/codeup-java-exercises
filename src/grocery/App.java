@@ -21,7 +21,7 @@ public class App {
             if (in.yesNo("Would you like to add a new item?")) {
                 addItemToList(list);
             } else {
-                finalizeList(list);
+                cont = finalizeList(list);
             }
         } while (cont);
     }
@@ -56,7 +56,7 @@ public class App {
                             "(1) Add a new item\n" +
                             "(2) Edit an item's quantity\n" +
                             "(3) Remove an item\n" +
-                            "(0) Cancel");
+                            "(0) Done");
 
             switch (option) {
                 case 1:
@@ -70,18 +70,24 @@ public class App {
                     break;
             }
         } while (cont);
+
     }
 
-    private static void finalizeList(List list) {
+    private static boolean finalizeList(List list) {
+        boolean cont = true;
         // finalize list
-        list.sortList();
-        System.out.println("Your shopping list:");
-        list.printList();
-        if(in.yesNo("Does this all look correct?")) {
-            cont = false;
-        } else {
-            editListMenu(list);
-        }
+        do {
+            list.sortList();
+            System.out.println("Your shopping list:");
+            list.printList();
+            if(in.yesNo("Does this all look correct?")) {
+                cont = false;
+            } else {
+                editListMenu(list);
+            }
+        } while (cont);
+
+        return cont;
     }
 
     private static void addItemToList(List list) {
