@@ -15,34 +15,90 @@ public class App {
         }
     }
 
-    private static void buildGroceryList() {
+    private static void buildGroceryList(List list) {
         boolean cont = true;
-        List list = new List();
         do {
             if (in.yesNo("Would you like to add a new item?")) {
-                System.out.println(sr.getCategories());
-                String userCat = in.getString("Enter the category you wish you browse.");
-                sr.listByCategory(userCat);
-                String userSelect = in.getString("Enter the name of the item you wish to add to your list");
-                int userQuantity = in.getInt(1, 100, "Enter the number of this item you wish to add");
-                try {
-                    list.addItemToList(sr.getItem(userSelect), userQuantity);
-                    System.out.println("Item added!");
-                }
-                catch (NullPointerException e) {
-                    System.out.println("Incorrect item or quantity.");
-                }
+                addItemToList(list);
             } else {
-                // finalize list
-                list.sortList();
-                System.out.println("Your shopping list:");
-                list.printList();
-                cont = false;
+                finalizeList(list);
             }
         } while (cont);
     }
 
-    public static void populateStockroom() {
+    // calling buildGroceryList with no parameters causes a new empty grocery list to be created
+    private static void buildGroceryList() {
+        List list = new List();
+        buildGroceryList(list);
+    }
+
+    private static void editListMenu(List list) {
+        String option = (in.getString("Would you like to edit or start over?"));
+
+        if (option.equalsIgnoreCase("start over")) {
+            buildGroceryList();
+        } else if (option.equalsIgnoreCase("edit")) {
+            editList(list);
+        } else if (option.equalsIgnoreCase("cancel")) {
+            System.out.println("Going back to finalization screen...");
+        } else {
+            System.out.println("Unrecognized input: " + option);
+            editListMenu(list);
+        }
+    }
+
+    private static void editList(List list) {
+        boolean cont = true;
+        do {
+            int option = in.getInt(0, 3,
+                    "What action do you wish to take?\n" +
+                            "Enter the number next to the option.\n" +
+                            "(1) Add a new item\n" +
+                            "(2) Edit an item's quantity\n" +
+                            "(3) Remove an item\n" +
+                            "(0) Cancel");
+
+            switch (option) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 0:
+                    cont = false;
+                    break;
+            }
+        } while (cont);
+    }
+
+    private static void finalizeList(List list) {
+        // finalize list
+        list.sortList();
+        System.out.println("Your shopping list:");
+        list.printList();
+        if(in.yesNo("Does this all look correct?")) {
+            cont = false;
+        } else {
+            editListMenu(list);
+        }
+    }
+
+    private static void addItemToList(List list) {
+            System.out.println(sr.getCategories());
+            String userCat = in.getString("Enter the category you wish you browse.");
+            sr.listByCategory(userCat);
+            String userSelect = in.getString("Enter the name of the item you wish to add to your list");
+            int userQuantity = in.getInt(1, 100, "Enter the number of this item you wish to add");
+            try {
+                list.addItemToList(sr.getItem(userSelect), userQuantity);
+                System.out.println("Item added!");
+            } catch (NullPointerException e) {
+                System.out.println("Incorrect item or quantity.");
+            }
+    }
+
+    private static void populateStockroom() {
         // CANNED
         sr.addToStock(Category.CANNED, "chicken noodle soup");
         sr.addToStock(Category.CANNED, "tomato soup");

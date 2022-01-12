@@ -1,9 +1,6 @@
 package grocery;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.EnumMap;
+import java.util.*;
 
 public class List {
     private final EnumMap<Category, ArrayList<Item>> list;
@@ -37,4 +34,5 @@ public class List {
             });
         }
     }
+
 }
