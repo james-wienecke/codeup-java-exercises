@@ -1,3 +1,5 @@
+import util.Input;
+
 public class ExceptionsErrorHandlingLec {
     public static void main(String[] args) {
 //        try {
@@ -27,5 +29,22 @@ public class ExceptionsErrorHandlingLec {
         }
 
         System.out.println(x);
+
+        try {
+            getBestRocketsPlayer();
+        } catch (Exception e) {
+            e.printStackTrace();
+            main(args);
+        }
+
+    }
+
+    public static String getBestRocketsPlayer() throws Exception {
+        Input in = new Input();
+        String answer = in.getString("Who is the best Houston Rockets Player of All Time?");
+        if (!answer.equalsIgnoreCase("Moochie Norris")) {
+            throw new DavidMadException("Expected \"Moochie Norris\" and instead received \"" + answer + "\".");
+        }
+        return "Correct! Moochie Norris was the best player.";
     }
 }
