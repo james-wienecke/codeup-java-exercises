@@ -59,8 +59,8 @@ public class Input {
     public int getInt() {
         int input;
         try {
-            input = Integer.parseInt(getString());
-        } catch (Exception e) {
+            input = Integer.valueOf(getString());
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             input = getInt();
         }
@@ -70,8 +70,8 @@ public class Input {
     public int getInt(String prompt) {
         int input;
         try {
-            input = Integer.parseInt(getString(prompt));
-        } catch (Exception e) {
+            input = Integer.valueOf(getString(prompt));
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             input = getInt(prompt);
         }
@@ -103,8 +103,8 @@ public class Input {
     public double getDouble() {
         double input;
         try {
-            input = Double.parseDouble(getString());
-        } catch (Exception e) {
+            input = Double.valueOf(getString());
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             input = getDouble();
         }
@@ -114,8 +114,8 @@ public class Input {
     public double getDouble(String prompt) {
         double input;
         try {
-            input = Double.parseDouble(getString(prompt));
-        } catch (Exception e) {
+            input = Double.valueOf(getString(prompt));
+        } catch (NumberFormatException e) {
             e.printStackTrace();
             input = getDouble(prompt);
         }
@@ -152,5 +152,93 @@ public class Input {
     public void waitForAnyLine(String prompt) {
         System.out.println(prompt);
         String input = sc.nextLine();
+    }
+
+    public int getBinary() {
+        int input;
+        try {
+            input = Integer.valueOf(getString(), 2);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            input = getBinary();
+        }
+        return input;
+    }
+
+    public int getBinary(String prompt) {
+        int input;
+        try {
+            input = Integer.valueOf(getString(prompt), 2);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            input = getBinary(prompt);
+        }
+        return input;
+    }
+
+    public int getBinary(int min, int max) {
+        // if min is smaller than max we can fix automatically
+        if (min > max)
+            return getBinary(max, min);
+        int userInt = getBinary();
+        if (userInt < min || userInt > max)
+            return getBinary(min, max);
+        else
+            return  userInt;
+    }
+
+    public int getBinary(int min, int max, String prompt) {
+        // if min is smaller than max we can fix automatically
+        if (min > max)
+            return getBinary(max, min);
+        int userInt = getBinary(prompt);
+        if (userInt < min || userInt > max)
+            return getBinary(min, max, prompt);
+        else
+            return  userInt;
+    }
+
+    public int getHex() {
+        int input;
+        try {
+            input = Integer.valueOf(getString(), 16);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            input = getHex();
+        }
+        return input;
+    }
+
+    public int getHex(String prompt) {
+        int input;
+        try {
+            input = Integer.valueOf(getString(prompt), 16);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            input = getInt(prompt);
+        }
+        return input;
+    }
+
+    public int getHex(int min, int max) {
+        // if min is smaller than max we can fix automatically
+        if (min > max)
+            return getHex(max, min);
+        int userInt = getHex();
+        if (userInt < min || userInt > max)
+            return getHex(min, max);
+        else
+            return  userInt;
+    }
+
+    public int getHex(int min, int max, String prompt) {
+        // if min is smaller than max we can fix automatically
+        if (min > max)
+            return getHex(max, min);
+        int userInt = getHex(prompt);
+        if (userInt < min || userInt > max)
+            return getHex(min, max, prompt);
+        else
+            return  userInt;
     }
 }
